@@ -20,8 +20,8 @@
  * limitations under the License.
  */
 
-#ifndef LINKEDLIST_H_
-#define LINKEDLIST_H_
+#ifndef LINKEDLIST_s_H_
+#define LINKEDLIST_s_H_
 
 #include <stdint.h>
 #include "mbed.h"
