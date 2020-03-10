@@ -66,6 +66,44 @@ namespace stem_s {
         pins.analogWritePin(AnalogPin.P0, (duty / 100 * 1023));
     }
 
+
+    /**
+     * TFW-S-M1の温度センサーが熱い場合（30℃超）に真を返します。
+     */
+    //% blockId=is_temperature_high
+    //% block="is hot"
+    //% group="micro:bit本体"
+    export function isTemperatureHigh(): boolean {
+        if (getTemperature(OutputNumberFormat.FLOAT) > 30) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * TFW-S-M1の温度センサーが、閾値より熱い（または冷たい）場合に真を返します。
+     * @param temperatureThreshold number of brightness-threshold, eg: 30
+     */
+    //% blockId=gt_temperature_high
+    //% block="Than %temperatureThreshold|degC, %settingHotOrCold"
+    //% group="micro:bit本体"
+    export function gtTemperatureHigh(temperatureThreshold: number, settingHotCold: SettingHotCold): boolean {
+        if (settingHotCold === SettingHotCold.HOT) {
+            if (getTemperature(OutputNumberFormat.FLOAT) > temperatureThreshold) {
+                return true;
+            }
+            return false;
+        }
+        if (settingHotCold === SettingHotCold.COLD) {
+            if (getTemperature(OutputNumberFormat.FLOAT) < temperatureThreshold) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
+
     let EN1_init_done: boolean = false;
 
     /**
