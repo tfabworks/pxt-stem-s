@@ -3,7 +3,7 @@ namespace stem_s {
     /**
      * TFW-S-M1の人感センサーが反応しているとき真を返します。
      */
-    //% blockId=human_detection block="Is Human moving"
+    //% blockId=human_detection_s block="Is Human moving"
     //% group="S-M1"
     export function humanDetection(): boolean {
         if (pins.digitalReadPin(DigitalPin.P14) == 1) {
@@ -16,7 +16,7 @@ namespace stem_s {
     /**
      * micro:bit本体の明るさセンサーが暗い場合（20未満）、かつ TFW-S-M1の人感センサーが反応しているとき真を返します。
      */
-    //% blockId=is_human_detection_and_dark
+    //% blockId=is_human_detection_and_dark_s
     //% block="Is Dark and Human Moving"
     //% group="S-M1"
     export function isHumanDetectionAndDark(): boolean {
@@ -29,7 +29,7 @@ namespace stem_s {
     /**
      * TFW-S-M1のスイッチをONします。
      */
-    //% blockId=turn_on block="Switch Turn ON"
+    //% blockId=turn_on_s block="Switch Turn ON"
     //% group="S-M1"
     export function turnON(): void {
         pins.digitalWritePin(DigitalPin.P8,1);
@@ -38,7 +38,7 @@ namespace stem_s {
     /**
      * TFW-S-M1のスイッチをOFFします。
      */
-    //% blockId=turn_off block="Switch Turn OFF"
+    //% blockId=turn_off_s block="Switch Turn OFF"
     //% group="S-M1"
     export function turnOFF(): void {
         pins.digitalWritePin(DigitalPin.P8, 0);
@@ -48,7 +48,7 @@ namespace stem_s {
      * TFW-S-M1のスイッチの出力をコントロールします。
      * @param duty set the duty-ratio, eg: 100
      */
-    //% blockId=sw1_out
+    //% blockId=sw1_out_s
     //% block="Output %duty\\%"
     //% duty.min=0 duty.max=100
     //% group="S-M1"
@@ -60,7 +60,7 @@ namespace stem_s {
     /**
      * TFW-S-M1の温度センサーが熱い場合（30℃超）に真を返します。
      */
-    //% blockId=is_temperature_high
+    //% blockId=is_temperature_high_s
     //% block="is hot"
     //% group="S-M1"
     export function isTemperatureHigh(): boolean {
@@ -74,7 +74,7 @@ namespace stem_s {
      * TFW-S-M1の温度センサーが、閾値より熱い（または冷たい）場合に真を返します。
      * @param temperatureThreshold number of brightness-threshold, eg: 30
      */
-    //% blockId=gt_temperature_high
+    //% blockId=gt_temperature_high_s
     //% block="Than %temperatureThreshold|degC, %settingHotOrCold"
     //% group="S-M1"
     export function gtTemperatureHigh(temperatureThreshold: number, settingHotCold: SettingHotCold_s): boolean {
@@ -100,7 +100,7 @@ namespace stem_s {
      * TFW-S-M1で温度[℃]を測定します。
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
-    //% blockId=get_temperature block="Temperature[degC] (S-M1) || %format"
+    //% blockId=get_temperature_s block="Temperature[degC] (S-M1) || %format"
     //% group="S-M1"
     export function getTemperature(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
@@ -114,7 +114,7 @@ namespace stem_s {
      * TFW-S-M1で湿度[%]を測定します。
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
-    //% blockId=get_humidity block="Humidity[\\%] || %format"
+    //% blockId=get_humidity_s block="Humidity[\\%] || %format"
     //% group="S-M1"
     export function getHumidity(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
@@ -128,7 +128,7 @@ namespace stem_s {
      * TFW-S-M1で気圧[hPa]を測定します。
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
-    //% blockId=get_pressure block="Pressure[hPa] || %format"
+    //% blockId=get_pressure_s block="Pressure[hPa] || %format"
     //% group="S-M1"
     export function getPressure(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
@@ -143,7 +143,7 @@ namespace stem_s {
      * @param referencePressure 基準面の気圧[hPa], eg: 1013
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
-    //% blockId=get_altitude block="Altitude[m] Pressure at reference level%referencePressure| || %format"
+    //% blockId=get_altitude_s block="Altitude[m] Pressure at reference level%referencePressure| || %format"
     //% group="S-M1"
     export function getAltitude(referencePressure: number = 1013, format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();

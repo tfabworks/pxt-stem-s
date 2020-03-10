@@ -30,7 +30,7 @@ namespace stem_s {
     /**
      * micro:bit本体の明るさセンサーが暗い場合（20未満）に真を返します。
      */
-    //% blockId=is_dark block="is dark"
+    //% blockId=is_dark_s block="is dark"
     //% group="micro:bit本体"
     export function isDark(): boolean {
         return _isDark(_暗い判定閾値, _明るい判定閾値);
@@ -91,7 +91,7 @@ namespace stem_s {
      * micro:bit本体の明るさセンサーが閾値より暗い（または明るい）場合に真を返します。
      * @param lightThreshold number of brightness-threshold, eg: 15
      */
-    //% blockId=brightness_determination
+    //% blockId=brightness_determination_s
     //% block="Than %lightThreshold, %settingDarkOrBright"
     //% lightThreshold.min=0 lightThreshold.max=255
     //% group="micro:bit本体"
@@ -129,7 +129,7 @@ namespace stem_s {
     /**
      * micro:bit本体が揺り動かされた場合に真を返します。
      */
-    //% blockId=is_move
+    //% blockId=is_move_s
     //% block="micro:bit is moving"
     //% group="micro:bit本体"
     export function isMove(): boolean {

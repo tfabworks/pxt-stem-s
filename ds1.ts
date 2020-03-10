@@ -3,7 +3,7 @@ namespace stem_s {
      * TFW-DS1で距離[cm]を測定します。
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
-    //% blockId=uds
+    //% blockId=uds_s
     //% block="Distance[cm] || %format"
     //% group="DS1"
     export function getDistance(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER):number {

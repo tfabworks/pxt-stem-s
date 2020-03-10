@@ -21,7 +21,7 @@ namespace stem_s {
      * サーボモーターを指定角度へ動かします。音楽のブロックと同時に使用できます
      */
     // blockId=kr1servoSetangle block="set %KR1_SERVO_PORT angle to %degrees=protractorPicker °"
-    //% blockId=kr1servoSetangle
+    //% blockId=kr1servoSetangle_s
     //% block="サーボ %KR1_SERVO_PORT 角度 %degrees=protractorPicker °"
     //% group="KR1"
     export function setAngle(port: KR1_SERVO_PORT_s, degrees: number): void {
@@ -35,7 +35,7 @@ namespace stem_s {
      * 指定の幅（マイクロ秒）のサーボ信号を出力します。音楽のブロックと同時に使用できます
      * @param usec the width of the pulse in microseconds
      */
-    //% blockId=kr1servoSetPulseWidth
+    //% blockId=kr1servoSetPulseWidth_s
     // block="set %KR1_SERVO_PORT pulse width %usec=protractorPicker °"
     //% block="サーボ %KR1_SERVO_PORT パルス幅 %usec|マイクロ秒"
     //% usec.min=500 usec.max=2500
@@ -58,7 +58,7 @@ namespace stem_s {
      * 360°連続回転サーボモーターを指定の回転速度で回転させます（-100%～100%）。音楽のブロックと同時に使用できます
      * @param speed the throttle of the motor from -100% to 100%
      */
-    //% blockId=kr1servoRun block="連続回転サーボ %port 回転速度 %speed=speedPicker \\%"
+    //% blockId=kr1servoRun_s block="連続回転サーボ %port 回転速度 %speed=speedPicker \\%"
     //% group="KR1"
     export function run(port: KR1_SERVO_PORT_s, speed: number): void {
         const degrees = clampDegrees(Math.map(speed, -100, 100, _minAngle, _maxAngle));
@@ -75,7 +75,7 @@ namespace stem_s {
      * 回転を停止させます。保持力は維持されません
      */
     //  blockId=kr1servoStop block="stop %port"
-    //% blockId=kr1servoStop block="連続回転サーボ %port 止める"
+    //% blockId=kr1servoStop_s block="連続回転サーボ %port 止める"
     //% group="KR1"
     export function stop(port: KR1_SERVO_PORT_s): void {
         if (port == KR1_SERVO_PORT_s.P1) {
