@@ -11,7 +11,7 @@
     "stem_s.gtTemperatureHigh|block": "%temperatureThreshold|℃より%settingHotOrCold|",
     "stem_s.isMove|block": "micro:bitが動いた",
     "stem_s.getDistance|block": "距離[cm]",
-    "stem_s.getTemperature|block": "温度[℃] (赤ボード)",
+    "stem_s.getTemperature|block": "温度[℃] (S-M1)",
     "stem_s.getHumidity|block": "湿度[\\%]",
     "stem_s.getPressure|block": "気圧[hPa]",
     "stem_s.IR_ON|block": "赤外線ON",

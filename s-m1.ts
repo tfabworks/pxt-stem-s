@@ -182,4 +182,14 @@ namespace stem_s {
             EN1_init_done = true;
         }
     }
+
+    /**
+     * TFW-S-M1で音が鳴るよう設定します。
+     */
+    //% blockId=set_pitch_pin_m1 block="音が鳴るようにする"
+    //% group="S-M1"
+    export function setPitchPinM1(): void {
+        pins.analogSetPitchPin(AnalogPin.P8)
+    }
+
 }
