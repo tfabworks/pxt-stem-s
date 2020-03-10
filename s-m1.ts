@@ -53,7 +53,7 @@ namespace stem_s {
     //% duty.min=0 duty.max=100
     //% group="S-M1"
     export function sw1_out(duty: number): void {
-        pins.analogWritePin(AnalogPin.P0, (duty / 100 * 1023));
+        pins.analogWritePin(AnalogPin.P8, (duty / 100 * 1023));
     }
 
 

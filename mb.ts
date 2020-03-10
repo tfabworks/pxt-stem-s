@@ -20,7 +20,7 @@ enum OutputNumberFormat_s {
 }
 
 //% groups='["micro:bit本体", "S-M1", "DS1", "IR2", "TP2", "KR1"]'
-//% weight=70 icon="\uf0c3" color=#ff6347 block="STEM"
+//% weight=69 icon="\uf0c3" color=#ff6347 block="STEM-S"
 namespace stem_s {
     let _今まで暗い: boolean = false;
     const _暗い判定閾値: number = 20;
