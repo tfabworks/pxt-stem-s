@@ -32,12 +32,7 @@ namespace stem_s {
     //% blockId=turn_on block="Switch Turn ON"
     //% group="S-M1"
     export function turnON(): void {
-        if (pins.analogReadPin(AnalogPin.P1) < 25) {
-            pins.digitalWritePin(DigitalPin.P1, 1);
-        }
-        else {
-            pins.digitalWritePin(DigitalPin.P0, 1)
-        }
+        pins.digitalWritePin(DigitalPin.P8,1);
     }
 
     /**
@@ -46,12 +41,7 @@ namespace stem_s {
     //% blockId=turn_off block="Switch Turn OFF"
     //% group="S-M1"
     export function turnOFF(): void {
-        if (pins.analogReadPin(AnalogPin.P1) < 25) {
-            pins.digitalWritePin(DigitalPin.P1, 0);
-        }
-        else {
-            pins.digitalWritePin(DigitalPin.P0, 0)
-        }
+        pins.digitalWritePin(DigitalPin.P8, 0);
     }
 
     /**
