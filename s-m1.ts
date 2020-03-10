@@ -72,7 +72,7 @@ namespace stem_s {
      */
     //% blockId=is_temperature_high
     //% block="is hot"
-    //% group="micro:bit本体"
+    //% group="S-M1"
     export function isTemperatureHigh(): boolean {
         if (getTemperature(OutputNumberFormat.FLOAT) > 30) {
             return true;
@@ -86,7 +86,7 @@ namespace stem_s {
      */
     //% blockId=gt_temperature_high
     //% block="Than %temperatureThreshold|degC, %settingHotOrCold"
-    //% group="micro:bit本体"
+    //% group="S-M1"
     export function gtTemperatureHigh(temperatureThreshold: number, settingHotCold: SettingHotCold): boolean {
         if (settingHotCold === SettingHotCold.HOT) {
             if (getTemperature(OutputNumberFormat.FLOAT) > temperatureThreshold) {
