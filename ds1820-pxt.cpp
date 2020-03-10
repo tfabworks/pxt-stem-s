@@ -1,5 +1,5 @@
 #include "pxt.h"
-#include "source/DS1820.h"
+#include "source/DS1820_s.h"
 
 using namespace pxt;
 

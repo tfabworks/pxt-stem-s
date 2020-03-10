@@ -20,8 +20,8 @@
  * THE SOFTWARE.
  */
 
-#ifndef MBED_DS1820_H
-#define MBED_DS1820_H
+#ifndef MBED_DS1820_s_H
+#define MBED_DS1820_s_H
 
 #include "mbed.h"
 #include "LinkedList.h"
