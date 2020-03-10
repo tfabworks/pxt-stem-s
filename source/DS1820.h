@@ -49,7 +49,7 @@
  * }
  * @endcode
  */
-class DS1820 {
+class DS1820_s {
 public:
     enum devices_s{
         this_device,     // command applies to only this device
@@ -71,8 +71,8 @@ public:
      * @param power_pin DigitalOut (optional) pin to control the power MOSFET
      * @param power_polarity bool (optional) which sets active state (0 for active low (default), 1 for active high)
      */
-    DS1820(PinName data_pin, PinName power_pin = NC, bool power_polarity = 0); // Constructor with parasite power pin
-    ~DS1820();
+    DS1820_s(PinName data_pin, PinName power_pin = NC, bool power_polarity = 0); // Constructor with parasite power pin
+    ~DS1820_s();
 
     /** Function to see if there are DS1820 devices left on a pin which do not have a corresponding DS1820 object
     *

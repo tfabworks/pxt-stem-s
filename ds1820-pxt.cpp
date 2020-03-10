@@ -27,18 +27,18 @@ enum class Pins_s{
 
 namespace DS1820pxt_s { 
 
-  DS1820 *probe;
+  DS1820_s *probe;
   //%
   void cpp_init(){
     Pins_s pin = Pins_s::P0;
     if (probe != NULL) delete(probe);
-    probe = new DS1820((PinName)pin);
-    probe->convertTemperature(true, DS1820::all_devices);
+    probe = new DS1820_s((PinName)pin);
+    probe->convertTemperature(true, DS1820_s::all_devices);
   }
 
   //%
   float cpp_temp1dp() {
-    probe->convertTemperature(true, DS1820::all_devices);
+    probe->convertTemperature(true, DS1820_s::all_devices);
     uBit.sleep(20);
 //    return ((int)(probe->temperature() * 10.0));
     return probe->temperature();

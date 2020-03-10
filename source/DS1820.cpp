@@ -33,10 +33,10 @@ void init_soft_delay( void ) {
     #define ONEWIRE_DELAY_US(value) wait_us(value)
 #endif
 
-LinkedList<node> DS1820::probes;
+LinkedList<node> DS1820_s::probes;
  
  
-DS1820::DS1820 (PinName data_pin, PinName power_pin, bool power_polarity) : _datapin(data_pin), _parasitepin(power_pin) {
+DS1820_s::DS1820_s (PinName data_pin, PinName power_pin, bool power_polarity) : _datapin(data_pin), _parasitepin(power_pin) {
     int byte_counter;
     _power_polarity = power_polarity;
 
@@ -57,7 +57,7 @@ DS1820::DS1820 (PinName data_pin, PinName power_pin, bool power_polarity) : _dat
     }
 }
 
-DS1820::~DS1820 (void) {
+DS1820_s::~DS1820_s (void) {
     node *tmp;
     for(int i=1; i<=probes.length(); i++)
     {
@@ -68,7 +68,7 @@ DS1820::~DS1820 (void) {
 }
 
  
-bool DS1820::onewire_reset(DigitalInOut *pin) {
+bool DS1820_s::onewire_reset(DigitalInOut *pin) {
 // This will return false if no devices are present on the data bus
     bool presence=false;
     ONEWIRE_OUTPUT(pin);
@@ -82,7 +82,7 @@ bool DS1820::onewire_reset(DigitalInOut *pin) {
     return presence;
 }
  
-void DS1820::onewire_bit_out (DigitalInOut *pin, bool bit_data) {
+void DS1820_s::onewire_bit_out (DigitalInOut *pin, bool bit_data) {
     ONEWIRE_OUTPUT(pin);
     pin->write(0);
     ONEWIRE_DELAY_US(3);                 // DXP modified from 5
@@ -96,7 +96,7 @@ void DS1820::onewire_bit_out (DigitalInOut *pin, bool bit_data) {
     }
 }
  
-void DS1820::onewire_byte_out(char data) { // output data character (least sig bit first).
+void DS1820_s::onewire_byte_out(char data) { // output data character (least sig bit first).
     int n;
     for (n=0; n<8; n++) {
         onewire_bit_out(&this->_datapin, data & 0x01);
@@ -104,7 +104,7 @@ void DS1820::onewire_byte_out(char data) { // output data character (least sig b
     }
 }
  
-bool DS1820::onewire_bit_in(DigitalInOut *pin) {
+bool DS1820_s::onewire_bit_in(DigitalInOut *pin) {
     bool answer;
     ONEWIRE_OUTPUT(pin);
     pin->write(0);
@@ -116,7 +116,7 @@ bool DS1820::onewire_bit_in(DigitalInOut *pin) {
     return answer;
 }
  
-char DS1820::onewire_byte_in() { // read byte, least sig byte first
+char DS1820_s::onewire_byte_in() { // read byte, least sig byte first
     char answer = 0x00;
     int i;
     for (i=0; i<8; i++) {
@@ -127,7 +127,7 @@ char DS1820::onewire_byte_in() { // read byte, least sig byte first
     return answer;
 }
 
-bool DS1820::unassignedProbe(PinName pin) {
+bool DS1820_s::unassignedProbe(PinName pin) {
     DigitalInOut _pin(pin);
     ONEWIRE_INIT((&_pin));
     INIT_DELAY;
@@ -135,11 +135,11 @@ bool DS1820::unassignedProbe(PinName pin) {
     return search_ROM_routine(&_pin, 0xF0, ROM_address);
 }
  
-bool DS1820::unassignedProbe(DigitalInOut *pin, char *ROM_address) {
+bool DS1820_s::unassignedProbe(DigitalInOut *pin, char *ROM_address) {
     return search_ROM_routine(pin, 0xF0, ROM_address);
 }
  
-bool DS1820::search_ROM_routine(DigitalInOut *pin, char command, char *ROM_address) {
+bool DS1820_s::search_ROM_routine(DigitalInOut *pin, char command, char *ROM_address) {
     bool DS1820_done_flag = false;
     int DS1820_last_descrepancy = 0;
     char DS1820_search_ROM[8] = {0, 0, 0, 0, 0, 0, 0, 0};
@@ -215,7 +215,7 @@ bool DS1820::search_ROM_routine(DigitalInOut *pin, char command, char *ROM_addre
                         return true;
                     } else {                    //Otherwise, check if ROM is already known
                         bool equal = true;
-                        DS1820 *pointer = (DS1820*) list_container->data;
+                        DS1820_s *pointer = (DS1820_s*) list_container->data;
                         char *ROM_compare = pointer->_ROM;
                         
                         for(byte_counter=0;byte_counter<8;byte_counter++) {
@@ -236,7 +236,7 @@ bool DS1820::search_ROM_routine(DigitalInOut *pin, char command, char *ROM_addre
     return return_value;
 }
  
-void DS1820::match_ROM() {
+void DS1820_s::match_ROM() {
 // Used to select a specific device
     int i;
     onewire_reset(&this->_datapin);
@@ -246,12 +246,12 @@ void DS1820::match_ROM() {
     }
 }
  
-void DS1820::skip_ROM() {
+void DS1820_s::skip_ROM() {
     onewire_reset(&this->_datapin);
     onewire_byte_out(0xCC);   // Skip ROM command
 }
  
-bool DS1820::ROM_checksum_error(char *_ROM_address) {
+bool DS1820_s::ROM_checksum_error(char *_ROM_address) {
     char _CRC=0x00;
     int i;
     for(i=0;i<7;i++) // Only going to shift the lower 7 bytes
@@ -260,7 +260,7 @@ bool DS1820::ROM_checksum_error(char *_ROM_address) {
     return (_CRC!=_ROM_address[7]); // will return true if there is a CRC checksum mis-match         
 }
  
-bool DS1820::RAM_checksum_error() {
+bool DS1820_s::RAM_checksum_error() {
     char _CRC=0x00;
     int i;
     for(i=0;i<8;i++) // Only going to shift the lower 8 bytes
@@ -269,7 +269,7 @@ bool DS1820::RAM_checksum_error() {
     return (_CRC!=RAM[8]); // will return true if there is a CRC checksum mis-match        
 }
  
-char DS1820::CRC_byte (char _CRC, char byte ) {
+char DS1820_s::CRC_byte (char _CRC, char byte ) {
     int j;
     for(j=0;j<8;j++) {
         if ((byte & 0x01 ) ^ (_CRC & 0x01)) {
@@ -301,7 +301,7 @@ char DS1820::CRC_byte (char _CRC, char byte ) {
 return _CRC;
 }
  
-int DS1820::convertTemperature(bool wait, devices_s device) {
+int DS1820_s::convertTemperature(bool wait, devices_s device) {
     // Convert temperature into scratchpad RAM for all devices at once
     int delay_time = 750; // Default delay time
     char resolution;
@@ -342,7 +342,7 @@ int DS1820::convertTemperature(bool wait, devices_s device) {
     return delay_time;
 }
  
-void DS1820::read_RAM() {
+void DS1820_s::read_RAM() {
     // This will copy the DS1820's 9 bytes of RAM data
     // into the objects RAM array. Functions that use
     // RAM values will automaticly call this procedure.
@@ -356,20 +356,20 @@ void DS1820::read_RAM() {
 //       crcerr = 1;
 }
 
-bool DS1820::setResolution(unsigned int resolution) {
+bool DS1820_s::setResolution(unsigned int resolution) {
     bool answer = false;
     resolution = resolution - 9;
     if (resolution < 4) {
         resolution = resolution<<5; // align the bits
         RAM[4] = (RAM[4] & 0x60) | resolution; // mask out old data, insert new
         write_scratchpad ((RAM[2]<<8) + RAM[3]);
-//        store_scratchpad (DS1820::this_device); // Need to test if this is required
+//        store_scratchpad (DS1820_s::this_device); // Need to test if this is required
         answer = true;
     }
     return answer;
 }
  
-void DS1820::write_scratchpad(int data) {
+void DS1820_s::write_scratchpad(int data) {
     RAM[3] = data;
     RAM[2] = data>>8;
     match_ROM();
@@ -381,7 +381,7 @@ void DS1820::write_scratchpad(int data) {
     }
 }
  
-float DS1820::temperature(char scale) {
+float DS1820_s::temperature(char scale) {
 // The data specs state that count_per_degree should be 0x10 (16), I found my devices
 // to have a count_per_degree of 0x4B (75). With the standard resolution of 1/2 deg C
 // this allowed an expanded resolution of 1/150th of a deg C. I wouldn't rely on this
@@ -414,7 +414,7 @@ float DS1820::temperature(char scale) {
     return answer;
 }
  
-bool DS1820::read_power_supply(devices_s device) {
+bool DS1820_s::read_power_supply(devices_s device) {
 // This will return true if the device (or all devices) are Vcc powered
 // This will return false if the device (or ANY device) is parasite powered
     if (device==all_devices)
