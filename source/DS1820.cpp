@@ -301,7 +301,7 @@ char DS1820::CRC_byte (char _CRC, char byte ) {
 return _CRC;
 }
  
-int DS1820::convertTemperature(bool wait, devices device) {
+int DS1820::convertTemperature(bool wait, devices_s device) {
     // Convert temperature into scratchpad RAM for all devices at once
     int delay_time = 750; // Default delay time
     char resolution;
@@ -414,7 +414,7 @@ float DS1820::temperature(char scale) {
     return answer;
 }
  
-bool DS1820::read_power_supply(devices device) {
+bool DS1820::read_power_supply(devices_s device) {
 // This will return true if the device (or all devices) are Vcc powered
 // This will return false if the device (or ANY device) is parasite powered
     if (device==all_devices)

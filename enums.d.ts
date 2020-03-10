@@ -20,7 +20,7 @@
      * @endcode
      */
 
-    declare const enum devices {
+    declare const enum devices_s {
     this_device = 0,
     }
 

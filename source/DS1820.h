@@ -51,7 +51,7 @@
  */
 class DS1820 {
 public:
-    enum devices{
+    enum devices_s{
         this_device,     // command applies to only this device
         all_devices };   // command applies to all devices
     
@@ -89,7 +89,7 @@ public:
       * to all devices on the 1-Wire bus.
       * @returns milliseconds untill conversion will complete.
       */
-    int convertTemperature(bool wait, devices device=all_devices);
+    int convertTemperature(bool wait, devices_s device=all_devices);
 
     /** This function will return the probe temperature. Approximately 10ms per
       * probe to read its RAM, do CRC check and convert temperature on the LPC1768.
@@ -126,7 +126,7 @@ private:
     void read_RAM();
     static bool unassignedProbe(DigitalInOut *pin, char *ROM_address);
     void write_scratchpad(int data);
-    bool read_power_supply(devices device=this_device);
+    bool read_power_supply(devices_s device=this_device);
 
     DigitalInOut _datapin;
     DigitalOut _parasitepin;
