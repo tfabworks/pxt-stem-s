@@ -15,10 +15,10 @@
 //NORDIC targets (NRF) use software delays since their ticker uses a 32kHz clock
     static uint32_t loops_per_us = 0;
     
-    #define INIT_DELAY      init_soft_delay()
+    #define INIT_DELAY      init_soft_delay_s()
     #define ONEWIRE_DELAY_US(value) for(int cnt = 0; cnt < (value * loops_per_us) >> 5; cnt++) {__NOP(); __NOP(); __NOP();}
     
-void init_soft_delay( void ) {
+void init_soft_delay_s( void ) {
     if (loops_per_us == 0) {
         loops_per_us = 1;
         Timer timey; 
