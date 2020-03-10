@@ -88,7 +88,7 @@ namespace stem_s {
     /**
      * TFW-IR2で赤外線リモコンコンセントOCR-05WをOFFします。
      */
-    //% blockId=ir_off
+    //% blockId=ir_off_s
     //% block="IR OFF"
     //% group="IR2"
     export function IR_OFF() {
