@@ -23,7 +23,7 @@
 #include "LinkedList.h"    // api wrapper
 
 template<class retT>
-LinkedList<retT>::LinkedList()
+LinkedList_s<retT>::LinkedList_s()
 {
     // clear the member
     _head = 0;
@@ -32,7 +32,7 @@ LinkedList<retT>::LinkedList()
 }
 
 template<class retT>
-LinkedList<retT>::~LinkedList()
+LinkedList_s<retT>::~LinkedList_s()
 {
     // free any memory that is on the heap
     while(remove(1) != NULL);
@@ -41,7 +41,7 @@ LinkedList<retT>::~LinkedList()
 }
 
 template<class retT>
-retT *LinkedList<retT>::push(void *data)
+retT *LinkedList_s<retT>::push(void *data)
 {
     retT *new_node = new retT [1];
     // make sure the new object was allocated
@@ -89,7 +89,7 @@ retT *LinkedList<retT>::push(void *data)
 //}
 
 template<class retT>
-retT *LinkedList<retT>::append(void *data)
+retT *LinkedList_s<retT>::append(void *data)
 {
     retT *current = _head;
     retT *new_node = new retT [1];
@@ -123,7 +123,7 @@ retT *LinkedList<retT>::append(void *data)
 }
 
 template<class retT>
-retT *LinkedList<retT>::remove(uint32_t loc)
+retT *LinkedList_s<retT>::remove(uint32_t loc)
 {
     retT *current = _head;
     retT *prev = 0;
@@ -153,7 +153,7 @@ retT *LinkedList<retT>::remove(uint32_t loc)
 }
 
 template<class retT>
-retT *LinkedList<retT>::pop(uint32_t loc)
+retT *LinkedList_s<retT>::pop(uint32_t loc)
 {
     retT *current = _head;
     // make sure we have something in the location
@@ -171,7 +171,7 @@ retT *LinkedList<retT>::pop(uint32_t loc)
 }
 
 template<class retT>
-uint32_t LinkedList<retT>::length(void)
+uint32_t LinkedList_s<retT>::length(void)
 {
     int32_t count = 0;
     retT *current = _head;
@@ -186,7 +186,7 @@ uint32_t LinkedList<retT>::length(void)
 }
 
 // pre-define the type for the linker
-template class LinkedList<node>;
+template class LinkedList_s<node_s>;
 
 
 

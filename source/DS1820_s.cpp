@@ -33,7 +33,7 @@ void init_soft_delay( void ) {
     #define ONEWIRE_DELAY_US(value) wait_us(value)
 #endif
 
-LinkedList<node> DS1820_s::probes;
+LinkedList_s<node_s> DS1820_s::probes;
  
  
 DS1820_s::DS1820_s (PinName data_pin, PinName power_pin, bool power_polarity) : _datapin(data_pin), _parasitepin(power_pin) {
@@ -58,7 +58,7 @@ DS1820_s::DS1820_s (PinName data_pin, PinName power_pin, bool power_polarity) : 
 }
 
 DS1820_s::~DS1820_s (void) {
-    node *tmp;
+    node_s *tmp;
     for(int i=1; i<=probes.length(); i++)
     {
         tmp = probes.pop(i);
@@ -203,7 +203,7 @@ bool DS1820_s::search_ROM_routine(DigitalInOut *pin, char command, char *ROM_add
             DS1820_last_descrepancy = descrepancy_marker;
             if (ROM_bit_index != 0xFF) {
                 int i = 1;
-                node *list_container;
+                node_s *list_container;
                 while(1) {
                     list_container = probes.pop(i);
                     if (list_container == NULL) {                             //End of list, or empty list

@@ -130,11 +130,11 @@ private:
 
     DigitalInOut _datapin;
     DigitalOut _parasitepin;
-    
+
     char _ROM[8];
     char RAM[9];
-    
-    static LinkedList<node> probes;
+
+    static LinkedList_s<node_s> probes;
 };
 
 

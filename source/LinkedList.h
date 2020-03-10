@@ -30,10 +30,10 @@
  *  @struct node
  *  @brief The Linked List structure
  */ 
-struct node
+struct node_s
 {
     void *data;         /*!< pointer to list member data */
-    struct node *next;  /*!< pointer to the next list member */
+    struct node_s *next;  /*!< pointer to the next list member */
 };
 
 /** Example using the LinkedList Class
@@ -69,7 +69,7 @@ struct node
  *  @brief API abstraction for a Linked List
  */ 
 template<class retT>
-class LinkedList
+class LinkedList_s
 {
 protected:
     retT *_head;
@@ -77,12 +77,12 @@ protected:
 public:
     /** Create the LinkedList object
      */   
-    LinkedList();
+    LinkedList_s();
     
     /** Deconstructor for the LinkedList object
      *  Removes any members
      */ 
-    ~LinkedList();
+    ~LinkedList_s();
 
     /** Add a member to the begining of the list
      *  @param data - Some data type that is added to the list
