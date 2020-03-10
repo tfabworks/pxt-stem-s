@@ -1,4 +1,4 @@
-enum KR1_SERVO_PORT {
+enum KR1_SERVO_PORT_s {
     //% block="P1"
     P1,
     //% block="P2"
@@ -24,7 +24,7 @@ namespace stem_s {
     //% blockId=kr1servoSetangle
     //% block="サーボ %KR1_SERVO_PORT 角度 %degrees=protractorPicker °"
     //% group="KR1"
-    export function setAngle(port: KR1_SERVO_PORT, degrees: number): void {
+    export function setAngle(port: KR1_SERVO_PORT_s, degrees: number): void {
         degrees = clampDegrees(degrees);
         let usec = (500000 + (2000 * (degrees * 1000 / 180))) / 1000;
         setPulseWidth(port, usec);
@@ -41,13 +41,13 @@ namespace stem_s {
     //% usec.min=500 usec.max=2500
     //% usec.defl=1500
     //% group="KR1"
-    export function setPulseWidth(port: KR1_SERVO_PORT, usec: number): void {
-        if (port == KR1_SERVO_PORT.P1) {
+    export function setPulseWidth(port: KR1_SERVO_PORT_s, usec: number): void {
+        if (port == KR1_SERVO_PORT_s.P1) {
             set_pulse_width_p1(usec);
             return;
         }
 
-        if (port == KR1_SERVO_PORT.P2) {
+        if (port == KR1_SERVO_PORT_s.P2) {
             set_pulse_width_p2(usec);
             return;
         }
@@ -60,7 +60,7 @@ namespace stem_s {
      */
     //% blockId=kr1servoRun block="連続回転サーボ %port 回転速度 %speed=speedPicker \\%"
     //% group="KR1"
-    export function run(port: KR1_SERVO_PORT, speed: number): void {
+    export function run(port: KR1_SERVO_PORT_s, speed: number): void {
         const degrees = clampDegrees(Math.map(speed, -100, 100, _minAngle, _maxAngle));
         const neutral = (_maxAngle - _minAngle) / 2;
         if (_stopOnNeutral && degrees == neutral) {
@@ -77,33 +77,33 @@ namespace stem_s {
     //  blockId=kr1servoStop block="stop %port"
     //% blockId=kr1servoStop block="連続回転サーボ %port 止める"
     //% group="KR1"
-    export function stop(port: KR1_SERVO_PORT): void {
-        if (port == KR1_SERVO_PORT.P1) {
+    export function stop(port: KR1_SERVO_PORT_s): void {
+        if (port == KR1_SERVO_PORT_s.P1) {
             stop_p1();
             return;
         }
-        if (port == KR1_SERVO_PORT.P2) {
+        if (port == KR1_SERVO_PORT_s.P2) {
             stop_p2();
             return;
         }
     }
 
-    //% shim=stem::set_pulse_width_p1
+    //% shim=stem_s::set_pulse_width_p1
     function set_pulse_width_p1(degrees: number): void {
         return;
     }
 
-    //% shim=stem::set_pulse_width_p2
+    //% shim=stem_s::set_pulse_width_p2
     function set_pulse_width_p2(degrees: number): void {
         return;
     }
 
-    //% shim=stem::stop_p1
+    //% shim=stem_s::stop_p1
     function stop_p1(): void {
         return;
     }
 
-    //% shim=stem::stop_p2
+    //% shim=stem_s::stop_p2
     function stop_p2(): void {
         return;
     }
