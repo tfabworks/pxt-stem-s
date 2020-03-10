@@ -6,7 +6,7 @@ namespace stem_s {
     //% blockId=human_detection block="Is Human moving"
     //% group="S-M1"
     export function humanDetection(): boolean {
-        if (pins.digitalReadPin(DigitalPin.P2) == 1) {
+        if (pins.digitalReadPin(DigitalPin.P14) == 1) {
             return true;
         } else {
             return false;
