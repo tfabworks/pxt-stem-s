@@ -6,7 +6,7 @@ namespace stem_s {
     //% blockId=uds
     //% block="Distance[cm] || %format"
     //% group="DS1"
-    export function getDistance(format:OutputNumberFormat = OutputNumberFormat.INTEGER):number {
+    export function getDistance(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER):number {
         // calculate distance -> median filter -> return value
         let arr: number[] = [];
         let l;
@@ -31,7 +31,7 @@ namespace stem_s {
                 distance_cm = pulseWidth * 153 / 29 / 2 / 100;
             }
 
-            if ( format === OutputNumberFormat.INTEGER ){
+            if (format === OutputNumberFormat_s.INTEGER ){
                 distance_cm = Math.round( distance_cm );
             }
 

@@ -25,7 +25,7 @@
     }
 
 
-    declare const enum Pins {
+    declare const enum Pins_s {
     P0 = 3,
     P1 = 2,
     P2 = 1,

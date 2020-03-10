@@ -3,7 +3,7 @@
 
 using namespace pxt;
 
-enum class Pins{
+enum class Pins_s{
   P0=  3,
   P1=  2,
   P2=  1,
@@ -25,7 +25,7 @@ enum class Pins{
   P20= 30
 };
 
-namespace DS1820pxt { 
+namespace DS1820pxt_s { 
 
   DS1820 *probe;
   //%

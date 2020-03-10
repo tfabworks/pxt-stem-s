@@ -1,15 +1,15 @@
 
 
-enum BME280_I2C_ADDRESS {
+enum BME280_I2C_ADDRESS_s {
     e_0x76 = 0x76
 };
 
-enum BME280_I2C_SENSOR_MODE {
+enum BME280_I2C_SENSOR_MODE_s {
     e_SLEEP = 0x00,
     e_NORMAL = 0x03
 };
 
-enum BME280_I2C_SAMPLING_MODE {
+enum BME280_I2C_SAMPLING_MODE_s {
     e_SKIP = 0x00,
     e_1X = 0x01,
     e_2X = 0x02,
@@ -18,7 +18,7 @@ enum BME280_I2C_SAMPLING_MODE {
     e_16X = 0x05
 };
 
-enum BME280_I2C_STANDBY_DURATION {
+enum BME280_I2C_STANDBY_DURATION_s {
     e_1_MS = 0x01,
     e_10_MS = 0x06,
     e_20_MS = 0x07,
@@ -29,7 +29,7 @@ enum BME280_I2C_STANDBY_DURATION {
     e_1000_MS = 0x05
 };
 
-enum BME280_I2C_IIR_FILTER_COEFFICIENT {
+enum BME280_I2C_IIR_FILTER_COEFFICIENT_s {
     e_OFF = 0x00,
     e_2 = 0x01,
     e_4 = 0x02,
@@ -38,7 +38,7 @@ enum BME280_I2C_IIR_FILTER_COEFFICIENT {
 };
 
 namespace BME280_I2Cs {
-    let I2CAddr = BME280_I2C_ADDRESS.e_0x76;
+    let I2CAddr = BME280_I2C_ADDRESS_s.e_0x76;
 
     function I2CWriteByte(register: number, data: number): void {
         let buf = pins.createBuffer(2);
@@ -58,7 +58,7 @@ namespace BME280_I2Cs {
         return (buf.getNumber(NumberFormat.UInt8BE, 0));
     }
 
-    let currentMode: BME280_I2C_SENSOR_MODE = BME280_I2C_SENSOR_MODE.e_SLEEP;
+    let currentMode: BME280_I2C_SENSOR_MODE_s = BME280_I2C_SENSOR_MODE_s.e_SLEEP;
     let lastSensorDataTime: number = 0;
 
     let dig_T1: number = 0;
@@ -144,7 +144,7 @@ namespace BME280_I2Cs {
         let BME280_RESET_ADDR = 0xE0;
         let soft_rst_cmd = 0xB6;
         I2CWriteByte(BME280_RESET_ADDR, soft_rst_cmd);
-        currentMode = BME280_I2C_SENSOR_MODE.e_SLEEP;
+        currentMode = BME280_I2C_SENSOR_MODE_s.e_SLEEP;
         basic.pause(3);
     }
 
@@ -295,7 +295,7 @@ namespace BME280_I2Cs {
     }
 
     function IsUpdateNeeded(): boolean {
-        if (currentMode != BME280_I2C_SENSOR_MODE.e_NORMAL) {
+        if (currentMode != BME280_I2C_SENSOR_MODE_s.e_NORMAL) {
             return false;
         }
 
@@ -307,28 +307,28 @@ namespace BME280_I2Cs {
 
         let ETA: number = 10;
         switch (currentSettings.standby_time) {
-            case BME280_I2C_STANDBY_DURATION.e_1_MS:
+            case BME280_I2C_STANDBY_DURATION_s.e_1_MS:
                 ETA += 1;
                 break;
-            case BME280_I2C_STANDBY_DURATION.e_10_MS:
+            case BME280_I2C_STANDBY_DURATION_s.e_10_MS:
                 ETA += 10;
                 break;
-            case BME280_I2C_STANDBY_DURATION.e_20_MS:
+            case BME280_I2C_STANDBY_DURATION_s.e_20_MS:
                 ETA += 20
                 break;
-            case BME280_I2C_STANDBY_DURATION.e_62_5_MS:
+            case BME280_I2C_STANDBY_DURATION_s.e_62_5_MS:
                 ETA += 62;
                 break;
-            case BME280_I2C_STANDBY_DURATION.e_125_MS:
+            case BME280_I2C_STANDBY_DURATION_s.e_125_MS:
                 ETA += 125;
                 break;
-            case BME280_I2C_STANDBY_DURATION.e_250_MS:
+            case BME280_I2C_STANDBY_DURATION_s.e_250_MS:
                 ETA += 250;
                 break;
-            case BME280_I2C_STANDBY_DURATION.e_500_MS:
+            case BME280_I2C_STANDBY_DURATION_s.e_500_MS:
                 ETA += 250;
                 break;
-            case BME280_I2C_STANDBY_DURATION.e_1000_MS:
+            case BME280_I2C_STANDBY_DURATION_s.e_1000_MS:
                 ETA += 1000;
                 break;
             default:
@@ -378,9 +378,9 @@ namespace BME280_I2Cs {
     }
 
     function SetSamplingMode(
-        t: BME280_I2C_SAMPLING_MODE = BME280_I2C_SAMPLING_MODE.e_2X,
-        p: BME280_I2C_SAMPLING_MODE = BME280_I2C_SAMPLING_MODE.e_16X,
-        h: BME280_I2C_SAMPLING_MODE = BME280_I2C_SAMPLING_MODE.e_1X): void {
+        t: BME280_I2C_SAMPLING_MODE_s = BME280_I2C_SAMPLING_MODE_s.e_2X,
+        p: BME280_I2C_SAMPLING_MODE_s = BME280_I2C_SAMPLING_MODE_s.e_16X,
+        h: BME280_I2C_SAMPLING_MODE_s = BME280_I2C_SAMPLING_MODE_s.e_1X): void {
 
         currentSettings.osr_t = t;
         currentSettings.osr_p = p;
@@ -388,12 +388,12 @@ namespace BME280_I2Cs {
         currentSettingsIsChanged = true;
     }
 
-    function SetStandbyDuration(sb: BME280_I2C_STANDBY_DURATION = BME280_I2C_STANDBY_DURATION.e_500_MS): void {
+    function SetStandbyDuration(sb: BME280_I2C_STANDBY_DURATION_s = BME280_I2C_STANDBY_DURATION_s.e_500_MS): void {
         currentSettings.standby_time = sb;
         currentSettingsIsChanged = true;
     }
 
-    function SetIIRFilterCoefficient(coef: BME280_I2C_IIR_FILTER_COEFFICIENT = BME280_I2C_IIR_FILTER_COEFFICIENT.e_16): void {
+    function SetIIRFilterCoefficient(coef: BME280_I2C_IIR_FILTER_COEFFICIENT_s = BME280_I2C_IIR_FILTER_COEFFICIENT_s.e_16): void {
         currentSettings.filter = coef;
         currentSettingsIsChanged = true;
     }
@@ -406,7 +406,7 @@ namespace BME280_I2Cs {
         }
     }
 
-    function SetSensorMode(mode: BME280_I2C_SENSOR_MODE = BME280_I2C_SENSOR_MODE.e_NORMAL): void {
+    function SetSensorMode(mode: BME280_I2C_SENSOR_MODE_s = BME280_I2C_SENSOR_MODE_s.e_NORMAL): void {
         let BME280_PWR_CTRL_ADDR = 0xF4;
 
         // update osr, IIR filter, standby duration settings if those are changed.
@@ -414,10 +414,10 @@ namespace BME280_I2Cs {
 
         let currentReg = I2CReadUint8(BME280_PWR_CTRL_ADDR);
 
-        if ((currentReg & 0x03) != BME280_I2C_SENSOR_MODE.e_SLEEP) {
+        if ((currentReg & 0x03) != BME280_I2C_SENSOR_MODE_s.e_SLEEP) {
             PutDeviceToSleep();
         }
-        if (mode != BME280_I2C_SENSOR_MODE.e_SLEEP) {
+        if (mode != BME280_I2C_SENSOR_MODE_s.e_SLEEP) {
             currentReg = currentReg & 0xFC | mode;
             I2CWriteByte(BME280_PWR_CTRL_ADDR, currentReg);
             currentMode = mode;
@@ -426,13 +426,13 @@ namespace BME280_I2Cs {
     }
 
     export function Init(
-        i2cAddr: BME280_I2C_ADDRESS = BME280_I2C_ADDRESS.e_0x76): void {
+        i2cAddr: BME280_I2C_ADDRESS_s = BME280_I2C_ADDRESS_s.e_0x76): void {
         let BME280_CHIP_ID = 0x60;
         let BME280_CHIP_ID_ADDR = 0xD0;
 
         I2CAddr = i2cAddr;
 
-        currentMode = BME280_I2C_SENSOR_MODE.e_SLEEP;
+        currentMode = BME280_I2C_SENSOR_MODE_s.e_SLEEP;
 
         let try_count = 5;
 
@@ -456,7 +456,7 @@ namespace BME280_I2Cs {
             currentSettingsIsChanged = false;
 
             SetSamplingMode();
-            SetStandbyDuration(BME280_I2C_STANDBY_DURATION.e_1_MS);
+            SetStandbyDuration(BME280_I2C_STANDBY_DURATION_s.e_1_MS);
             SetIIRFilterCoefficient();
             UpdateSettings();
             SetSensorMode();

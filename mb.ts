@@ -1,18 +1,18 @@
-enum DarkOrBrightSpecified {
+enum DarkOrBrightSpecified_s {
     //% block="DARK"
     IS_DARK,
     //% block="BRIGHT"
     IS_BRIGHT,
 }
 
-enum SettingHotCold {
+enum SettingHotCold_s {
     //% block="HOT"
     HOT,
     //% block="COLD"
     COLD,
 }
 
-enum OutputNumberFormat {
+enum OutputNumberFormat_s {
     //% block="INTEGER"
     INTEGER = 0,
     //% block="FLOAT"
@@ -95,7 +95,7 @@ namespace stem_s {
     //% block="Than %lightThreshold, %settingDarkOrBright"
     //% lightThreshold.min=0 lightThreshold.max=255
     //% group="micro:bit本体"
-    export function brightnessDetermination(lightThreshold: number, settingDarkOrBright: DarkOrBrightSpecified): boolean {
+    export function brightnessDetermination(lightThreshold: number, settingDarkOrBright: DarkOrBrightSpecified_s): boolean {
         if (_HYSTERESIS < 0) { control.assert(false); }
         if (lightThreshold < 0) {
             lightThreshold = 0;
@@ -104,13 +104,13 @@ namespace stem_s {
             lightThreshold = 255;
         }
 
-        if (settingDarkOrBright === DarkOrBrightSpecified.IS_DARK) {
+        if (settingDarkOrBright === DarkOrBrightSpecified_s.IS_DARK) {
             let 暗い判定閾値: number = lightThreshold;
             let 明るい判定閾値: number = lightThreshold + _HYSTERESIS;
             if (明るい判定閾値 > 255) { 明るい判定閾値 = 255; }
             return _isDark(暗い判定閾値, 明るい判定閾値);
         }
-        else if (settingDarkOrBright === DarkOrBrightSpecified.IS_BRIGHT) {
+        else if (settingDarkOrBright === DarkOrBrightSpecified_s.IS_BRIGHT) {
             let 暗い判定閾値: number = lightThreshold - _HYSTERESIS;
             let 明るい判定閾値: number = lightThreshold;
             if (暗い判定閾値 < 0) { 暗い判定閾値 = 0; }

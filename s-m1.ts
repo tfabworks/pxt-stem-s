@@ -64,7 +64,7 @@ namespace stem_s {
     //% block="is hot"
     //% group="S-M1"
     export function isTemperatureHigh(): boolean {
-        if (getTemperature(OutputNumberFormat.FLOAT) > 30) {
+        if (getTemperature(OutputNumberFormat_s.FLOAT) > 30) {
             return true;
         }
         return false;
@@ -77,15 +77,15 @@ namespace stem_s {
     //% blockId=gt_temperature_high
     //% block="Than %temperatureThreshold|degC, %settingHotOrCold"
     //% group="S-M1"
-    export function gtTemperatureHigh(temperatureThreshold: number, settingHotCold: SettingHotCold): boolean {
-        if (settingHotCold === SettingHotCold.HOT) {
-            if (getTemperature(OutputNumberFormat.FLOAT) > temperatureThreshold) {
+    export function gtTemperatureHigh(temperatureThreshold: number, settingHotCold: SettingHotCold_s): boolean {
+        if (settingHotCold === SettingHotCold_s.HOT) {
+            if (getTemperature(OutputNumberFormat_s.FLOAT) > temperatureThreshold) {
                 return true;
             }
             return false;
         }
-        if (settingHotCold === SettingHotCold.COLD) {
-            if (getTemperature(OutputNumberFormat.FLOAT) < temperatureThreshold) {
+        if (settingHotCold === SettingHotCold_s.COLD) {
+            if (getTemperature(OutputNumberFormat_s.FLOAT) < temperatureThreshold) {
                 return true;
             }
             return false;
@@ -102,9 +102,9 @@ namespace stem_s {
      */
     //% blockId=get_temperature block="Temperature[degC] (S-M1) || %format"
     //% group="S-M1"
-    export function getTemperature(format: OutputNumberFormat = OutputNumberFormat.INTEGER): number {
+    export function getTemperature(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
-        if (format === OutputNumberFormat.INTEGER) {
+        if (format === OutputNumberFormat_s.INTEGER) {
             return Math.round(BME280_I2Cs.Temperature());
         }
         return BME280_I2Cs.Temperature();
@@ -116,9 +116,9 @@ namespace stem_s {
      */
     //% blockId=get_humidity block="Humidity[\\%] || %format"
     //% group="S-M1"
-    export function getHumidity(format: OutputNumberFormat = OutputNumberFormat.INTEGER): number {
+    export function getHumidity(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
-        if (format === OutputNumberFormat.INTEGER) {
+        if (format === OutputNumberFormat_s.INTEGER) {
             return Math.round(BME280_I2Cs.Humidity());
         }
         return BME280_I2Cs.Humidity();
@@ -130,9 +130,9 @@ namespace stem_s {
      */
     //% blockId=get_pressure block="Pressure[hPa] || %format"
     //% group="S-M1"
-    export function getPressure(format: OutputNumberFormat = OutputNumberFormat.INTEGER): number {
+    export function getPressure(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
-        if (format === OutputNumberFormat.INTEGER) {
+        if (format === OutputNumberFormat_s.INTEGER) {
             return Math.round(BME280_I2Cs.Pressure());
         }
         return BME280_I2Cs.Pressure();
@@ -145,9 +145,9 @@ namespace stem_s {
      */
     //% blockId=get_altitude block="Altitude[m] Pressure at reference level%referencePressure| || %format"
     //% group="S-M1"
-    export function getAltitude(referencePressure: number = 1013, format: OutputNumberFormat = OutputNumberFormat.INTEGER): number {
+    export function getAltitude(referencePressure: number = 1013, format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
-        if (format === OutputNumberFormat.INTEGER) {
+        if (format === OutputNumberFormat_s.INTEGER) {
             return Math.round(calcHeight(referencePressure, BME280_I2Cs.Pressure(), BME280_I2Cs.Temperature()));
         }
         return calcHeight(referencePressure, BME280_I2Cs.Pressure(), BME280_I2Cs.Temperature());
@@ -178,7 +178,7 @@ namespace stem_s {
 
     function EN1_init_if_firsttime(): void {
         if (EN1_init_done == false) {
-            BME280_I2Cs.Init(BME280_I2C_ADDRESS.e_0x76);
+            BME280_I2Cs.Init(BME280_I2C_ADDRESS_s.e_0x76);
             EN1_init_done = true;
         }
     }
