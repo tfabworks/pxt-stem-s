@@ -20,7 +20,7 @@
  * limitations under the License.
  */
 
-#include "LinkedList.h"    // api wrapper
+#include "LinkedList_s.h"    // api wrapper
 
 template<class retT>
 LinkedList_s<retT>::LinkedList_s()

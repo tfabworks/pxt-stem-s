@@ -20,8 +20,8 @@
         "ds1820-pxt.ts",
         "source/DS1820_s.cpp",
         "source/DS1820_s.h",
-        "source/LinkedList.cpp",
-        "source/LinkedList.h",
+        "source/LinkedList_s.cpp",
+        "source/LinkedList_s.h",
         "enums.d.ts",
         "shims.d.ts",
         "_locales/ja/stem_s-strings.json"
@@ -31,6 +31,6 @@
         "test.blocks"
     ],
     "public": false,
-    "preferredEditor": "blocksprj",
+    "preferredEditor": "tsprj",
     "installedVersion": "workspace:6a4b7de1-fee5-46ce-184c-7bbc11243fd9"
 }
