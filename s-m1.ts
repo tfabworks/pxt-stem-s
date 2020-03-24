@@ -6,7 +6,7 @@ namespace stem_s {
     //% blockId=human_detection_s block="Is Human moving"
     //% group="S-M1"
     export function humanDetection(): boolean {
-        if (pins.digitalReadPin(DigitalPin.P14) == 1) {
+        if (pins.digitalReadPin(DigitalPin.P13) == 1) {
             return true;
         } else {
             return false;
@@ -32,7 +32,7 @@ namespace stem_s {
     //% blockId=turn_on_s block="Switch Turn ON"
     //% group="S-M1"
     export function turnON(): void {
-        pins.digitalWritePin(DigitalPin.P8,1);
+        pins.digitalWritePin(DigitalPin.P12,1);
     }
 
     /**
@@ -41,7 +41,7 @@ namespace stem_s {
     //% blockId=turn_off_s block="Switch Turn OFF"
     //% group="S-M1"
     export function turnOFF(): void {
-        pins.digitalWritePin(DigitalPin.P8, 0);
+        pins.digitalWritePin(DigitalPin.P12, 0);
     }
 
     /**
@@ -53,7 +53,7 @@ namespace stem_s {
     //% duty.min=0 duty.max=100
     //% group="S-M1"
     export function sw1_out(duty: number): void {
-        pins.analogWritePin(AnalogPin.P8, (duty / 100 * 1023));
+        pins.analogWritePin(AnalogPin.P12, (duty / 100 * 1023));
     }
 
 
@@ -182,14 +182,5 @@ namespace stem_s {
             EN1_init_done = true;
         }
     }
-
-    /**
-     * TFW-S-M1のミュートを解除し、音がなるようにします。
-     */
-    //% blockId=set_pitch_pin_m1 block="ミュートを解除"
-    //% group="S-M1"
-    export function setPitchPinM1(): void {
-        pins.analogSetPitchPin(AnalogPin.P13)
-    }
-
+    
 }
