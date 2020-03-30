@@ -19,6 +19,12 @@ enum OutputNumberFormat_s {
     FLOAT = 1
 }
 
+enum LED_s{
+    LED1,
+    LED2,
+    LED3
+}
+
 //% groups='["micro:bit本体", "S-M1", "DS1", "IR2", "TP2", "KR1"]'
 //% weight=71 icon="\uf0c3" color=#ff6347 block="STEM-S"
 namespace stem_s {
@@ -147,6 +153,20 @@ namespace stem_s {
         return false;
     }
 
+
+    /**
+     * 
+     */
+    //% blockId=stem_s_ledon
+    //% block="%ledを%colorにする"
+    //% group="micro:bit本体"
+    export function led_on( led: LED_s, color: NeoPixelColors) {
+        let strip: neopixel.Strip = null
+        strip = neopixel.create(DigitalPin.P16, 24, NeoPixelMode.RGB)
+        strip.showColor(neopixel.colors(NeoPixelColors.Red))
+    }
+
+    
      /**
      * グラフを表示します。
      */
