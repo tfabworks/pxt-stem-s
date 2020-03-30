@@ -167,7 +167,7 @@ namespace stem_s {
     //% group="micro:bit本体"
     export function led_on( led: LED_s, color: NeoPixelColors) {
         if ( led_on_firsttime == true) {
-            strip2 = neopixel.create(DigitalPin.P0, 16, NeoPixelMode.RGB)
+            strip2 = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
             led1 = strip2.range(0, 1)
             led2 = strip2.range(1, 1)
             led3 = strip2.range(2, 1)
