@@ -67,5 +67,5 @@ namespace stem_s {
             wait( (pulse_width_us2-60)/1000000.0 );
             servo2 = 0;
     }
-    #endif DELAY_ADJUST_US
+    #endif /*DELAY_ADJUST_US*/
 }

@@ -7,6 +7,7 @@ namespace stem_s {
 
     function 輸送波送信ポート設定() {
         pins.analogWritePin(AnalogPin.P14, 輸送波パルス幅)
+        //start_ir_carrier();
         pins.analogSetPeriod(AnalogPin.P14, 輸送波周期)
     }
 
@@ -159,4 +160,10 @@ namespace stem_s {
             control.waitMicros(760)
         }
     }
+
+    //% shim=stem_s::set_pulse_width_
+    function set_pulse_width(degrees: number): void {
+        return;
+    }
+
 }

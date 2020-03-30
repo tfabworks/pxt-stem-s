@@ -1,8 +1,7 @@
-music.onEvent(MusicEvent.MelodyNotePlayed, function () {
-	
-})
-stem_s.setPitchPinM1()
-music.beginMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Once)
+stem_s.showGraph(0)
 basic.forever(function () {
-	
+    stem_s.IR_ON()
+    basic.pause(1000)
+    stem_s.IR_OFF()
+    basic.pause(1000)
 })

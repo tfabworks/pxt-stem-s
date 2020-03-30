@@ -146,4 +146,16 @@ namespace stem_s {
         }
         return false;
     }
+
+     /**
+     * グラフを表示します。
+     */
+    //% blockId=stem_s_showGraph
+    //% block="%data|をグラフで表示"
+    //% group="micro:bit本体"
+    export function showGraph( data :number ) {
+        serial.redirectToUSB();
+        serial.writeLine(data.toString());
+    }
+
 }

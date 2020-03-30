@@ -1,3 +1,8 @@
+ /*
+  * Based on:
+  * https://github.com/Tinkertanker/pxt-ds1820-temperature-sensor/
+  * 
+*/
 #include "pxt.h"
 #include "source/DS1820_s.h"
 

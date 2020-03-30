@@ -1,4 +1,8 @@
-
+ /*
+  * Based on:
+  * https://github.com/tksgmsy/pxt-BME280_I2C
+  * 
+*/
 
 enum BME280_I2C_ADDRESS_s {
     e_0x76 = 0x76

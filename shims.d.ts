@@ -2,6 +2,14 @@
 declare namespace stem_s {
 
     /**
+     * start ir carrier
+     */
+    //% shim=stem_s::start_ir_carrier
+    function start_ir_carrier(): void;
+}
+declare namespace stem_s {
+
+    /**
      * Configure the P1 pin as an servo output
      */
     //% shim=stem_s::set_pulse_width_p1
