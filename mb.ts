@@ -175,13 +175,13 @@ namespace stem_s {
         }
 
         if ( led == LED_s.LED1 ) {
-            led1.showColor(neopixel.colors(NeoPixelColors.Red))
+            led1.showColor(neopixel.colors(color))
         }
         else if ( led == LED_s.LED2) {
-            led2.showColor(neopixel.colors(NeoPixelColors.Red))
+            led2.showColor(neopixel.colors(color))
         }
         else if (led == LED_s.LED3) {
-            led3.showColor(neopixel.colors(NeoPixelColors.Red))
+            led3.showColor(neopixel.colors(color))
         }        
     }
 
