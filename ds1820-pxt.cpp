@@ -35,7 +35,7 @@ namespace DS1820pxt_s {
   DS1820_s *probe;
   //%
   void cpp_init(){
-    Pins_s pin = Pins_s::P0;
+    Pins_s pin = Pins_s::P8;
     if (probe != NULL) delete(probe);
     probe = new DS1820_s((PinName)pin);
     probe->convertTemperature(true, DS1820_s::all_devices);

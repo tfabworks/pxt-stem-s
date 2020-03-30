@@ -13,11 +13,11 @@ namespace stem_s {
         for(l = 0; l < 3; l++) {
             let pulseWidth;
             const MAX_DIST_CM = 300;
-            pins.digitalWritePin(DigitalPin.P0, 0);
+            pins.digitalWritePin(DigitalPin.P8, 0);
             control.waitMicros(60000);
-            pins.digitalWritePin(DigitalPin.P0, 1);
+            pins.digitalWritePin(DigitalPin.P8, 1);
             control.waitMicros(20);
-            pins.digitalWritePin(DigitalPin.P0, 0);
+            pins.digitalWritePin(DigitalPin.P8, 0);
             pulseWidth = pins.pulseIn(DigitalPin.P1, PulseValue.High);
 
             let distance_cm;
