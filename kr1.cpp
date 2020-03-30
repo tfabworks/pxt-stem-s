@@ -52,7 +52,7 @@ namespace stem_s {
      * generate pwm waveform on P1
      */
     void generate_pwm_p1(){
-            DigitalOut servo1(MICROBIT_PIN_P1);
+            DigitalOut servo1(MICROBIT_PIN_P8);
             servo1 = 1;
             wait( (pulse_width_us1-60)/1000000.0 );
             servo1 = 0;

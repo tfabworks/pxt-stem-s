@@ -1,7 +1,7 @@
 enum KR1_SERVO_PORT_s {
-    //% block="P1"
+    //% block="1"
     P1,
-    //% block="P2"
+    //% block="2"
     P2
 }
 
