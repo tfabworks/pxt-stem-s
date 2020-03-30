@@ -154,6 +154,11 @@ namespace stem_s {
     }
 
 
+    let led1: neopixel.Strip = null
+    let led2: neopixel.Strip = null
+    let led3: neopixel.Strip = null
+    let strip2: neopixel.Strip = null
+    let led_on_firsttime=true;
     /**
      * 
      */
@@ -161,9 +166,23 @@ namespace stem_s {
     //% block="%ledを%colorにする"
     //% group="micro:bit本体"
     export function led_on( led: LED_s, color: NeoPixelColors) {
-        let strip: neopixel.Strip = null
-        strip = neopixel.create(DigitalPin.P16, 24, NeoPixelMode.RGB)
-        strip.showColor(neopixel.colors(NeoPixelColors.Red))
+        if ( led_on_firsttime == true) {
+            strip2 = neopixel.create(DigitalPin.P0, 16, NeoPixelMode.RGB)
+            led1 = strip2.range(0, 1)
+            led2 = strip2.range(1, 1)
+            led3 = strip2.range(2, 1)
+            led_on_firsttime = false;
+        }
+
+        if ( led == LED_s.LED1 ) {
+            led1.showColor(neopixel.colors(NeoPixelColors.Red))
+        }
+        else if ( led == LED_s.LED2) {
+            led2.showColor(neopixel.colors(NeoPixelColors.Red))
+        }
+        else if (led == LED_s.LED3) {
+            led3.showColor(neopixel.colors(NeoPixelColors.Red))
+        }        
     }
 
     
