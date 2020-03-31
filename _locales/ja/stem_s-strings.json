@@ -17,7 +17,6 @@
     "stem_s.IR_ON|block": "赤外線ON",
     "stem_s.IR_OFF|block": "赤外線OFF",
     "stem_s.humanDetection|block": "人が動いた",
-    "stem_s.isHumanDetectionAndDark|block": "暗いときに人が動いた",
     "stem_s.turnON|block": "スイッチON",
     "stem_s.turnOFF|block": "スイッチOFF",
     "stem_s.sw1_out|block": "出力を%duty|\\%にする",
