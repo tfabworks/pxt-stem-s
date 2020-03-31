@@ -15,12 +15,14 @@ namespace stem_s {
 
     /**
      * micro:bit本体の明るさセンサーが暗い場合（20未満）、かつ TFW-S-M1の人感センサーが反応しているとき真を返します。
+     * @param lightThreshold number of brightness - threshold, eg: 15
      */
-    //% blockId=is_human_detection_and_dark_s
-    //% block="Is Dark and Human Moving"
+    //% block="%lightThreshold|より暗いときに人が動いた"
     //% group="S-M1"
-    export function isHumanDetectionAndDark(): boolean {
-        if (humanDetection() && isDark()) {
+    //% blockId=isHumanDetectionAndDark_s
+    //% lightThreshold.min=0 lightThreshold.max=255
+    export function isHumanDetectionAndDark(lightThreshold:number): boolean {
+        if (humanDetection() && brightnessDetermination(lightThreshold, DarkOrBrightSpecified_s.IS_DARK ) ) {
             return true;
         }
         return false;
@@ -60,6 +62,7 @@ namespace stem_s {
     /**
      * TFW-S-M1の温度センサーが熱い場合（30℃超）に真を返します。
      */
+    /*
     //% blockId=is_temperature_high_s
     //% block="is hot"
     //% group="S-M1"
@@ -69,9 +72,10 @@ namespace stem_s {
         }
         return false;
     }
+    */
 
     /**
-     * TFW-S-M1の温度センサーが、閾値より熱い（または冷たい）場合に真を返します。
+     * TFW-S-M1の温度センサー温度が、閾値より高い（または低い）場合に真を返します。
      * @param temperatureThreshold number of brightness-threshold, eg: 30
      */
     //% blockId=gt_temperature_high_s
@@ -181,6 +185,37 @@ namespace stem_s {
             BME280_I2Cs.Init(BME280_I2C_ADDRESS_s.e_0x76);
             EN1_init_done = true;
         }
+    }
+
+    let led1: neopixel.Strip = null
+    let led2: neopixel.Strip = null
+    let led3: neopixel.Strip = null
+    let strip2: neopixel.Strip = null
+    let led_on_firsttime=true;
+    /**
+     * 
+     */
+    //% blockId=stem_s_ledon
+    //% block="%ledを%colorにする"
+    //% group="S-M1"
+    export function led_on( led: LED_s, color: NeoPixelColors) {
+        if ( led_on_firsttime == true) {
+            strip2 = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
+            led1 = strip2.range(0, 1)
+            led2 = strip2.range(1, 1)
+            led3 = strip2.range(2, 1)
+            led_on_firsttime = false;
+        }
+
+        if ( led == LED_s.LED1 ) {
+            led1.showColor(neopixel.colors(color))
+        }
+        else if ( led == LED_s.LED2) {
+            led2.showColor(neopixel.colors(color))
+        }
+        else if (led == LED_s.LED3) {
+            led3.showColor(neopixel.colors(color))
+        }        
     }
     
 }

@@ -26,7 +26,7 @@ enum LED_s{
 }
 
 //% groups='["micro:bit本体", "S-M1", "DS1", "IR2", "TP2", "KR1"]'
-//% weight=71 icon="\uf0c3" color=#ff6347 block="STEM-S"
+//% weight=71 icon="\uf0c3" color=#c13300 block="STEM-S"
 namespace stem_s {
     let _今まで暗い: boolean = false;
     const _暗い判定閾値: number = 20;
@@ -36,12 +36,14 @@ namespace stem_s {
     /**
      * micro:bit本体の明るさセンサーが暗い場合（20未満）に真を返します。
      */
+    /*
     //% blockId=is_dark_s block="is dark"
     //% group="micro:bit本体"
     export function isDark(): boolean {
         return _isDark(_暗い判定閾値, _明るい判定閾値);
 
     }
+    */
 
     /* 明るさの平均を取る */
     function _lightLevelSampling(): number {
@@ -151,38 +153,6 @@ namespace stem_s {
             return true;
         }
         return false;
-    }
-
-
-    let led1: neopixel.Strip = null
-    let led2: neopixel.Strip = null
-    let led3: neopixel.Strip = null
-    let strip2: neopixel.Strip = null
-    let led_on_firsttime=true;
-    /**
-     * 
-     */
-    //% blockId=stem_s_ledon
-    //% block="%ledを%colorにする"
-    //% group="micro:bit本体"
-    export function led_on( led: LED_s, color: NeoPixelColors) {
-        if ( led_on_firsttime == true) {
-            strip2 = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
-            led1 = strip2.range(0, 1)
-            led2 = strip2.range(1, 1)
-            led3 = strip2.range(2, 1)
-            led_on_firsttime = false;
-        }
-
-        if ( led == LED_s.LED1 ) {
-            led1.showColor(neopixel.colors(color))
-        }
-        else if ( led == LED_s.LED2) {
-            led2.showColor(neopixel.colors(color))
-        }
-        else if (led == LED_s.LED3) {
-            led3.showColor(neopixel.colors(color))
-        }        
     }
 
     

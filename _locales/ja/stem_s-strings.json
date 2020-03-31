@@ -1,8 +1,8 @@
 {
     "DarkOrBrightSpecified_s.IS_BRIGHT|block": "明るい",
     "DarkOrBrightSpecified_s.IS_DARK|block": "暗い",
-    "SettingHotCold_s.HOT|block": "熱い",
-    "SettingHotCold_s.COLD|block": "冷たい",
+    "SettingHotCold_s.HOT|block": "高い",
+    "SettingHotCold_s.COLD|block": "低い",
     "stem_s.isDark|block": "暗い",
     "OutputNumberFormat_s.INTEGER|block":"整数",
     "OutputNumberFormat_s.FLOAT|block": "小数",        
@@ -22,5 +22,6 @@
     "stem_s.turnOFF|block": "スイッチOFF",
     "stem_s.sw1_out|block": "出力を%duty|\\%にする",
     "stem_s.TP2_getTemperature|block": "温度[℃] (TP2)",
-    "stem_s.getAltitude|block": "高度差[m] 基準圧%referencePressure"
+    "stem_s.getAltitude|block": "高度差[m] 基準圧%referencePressure",
+    "NeoPixelColors.Black|block": "黒"
 }
