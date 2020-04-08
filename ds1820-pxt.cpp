@@ -31,6 +31,7 @@ enum class Pins_s{
 };
 
 namespace DS1820pxt_s { 
+  float g_previous_temperature;
 
   DS1820_s *probe;
   //%
@@ -39,13 +40,21 @@ namespace DS1820pxt_s {
     if (probe != NULL) delete(probe);
     probe = new DS1820_s((PinName)pin);
     probe->convertTemperature(true, DS1820_s::all_devices);
+
+    uBit.sleep(20);
+    g_previous_temperature = probe->temperature();
   }
 
   //%
   float cpp_temp1dp() {
     probe->convertTemperature(true, DS1820_s::all_devices);
     uBit.sleep(20);
+    float t = probe->temperature();
+    if ( t == -1000 ) {
+        return g_previous_temperature;
+    }
+    g_previous_temperature = t;
 //    return ((int)(probe->temperature() * 10.0));
-    return probe->temperature();
+    return t;
   }
 }
