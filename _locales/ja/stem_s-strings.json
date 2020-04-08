@@ -21,6 +21,6 @@
     "stem_s.turnOFF|block": "制御スイッチOFF",
     "stem_s.sw1_out|block": "制御スイッチの出力を%duty|\\%にする",
     "stem_s.TP2_getTemperature|block": "温度[℃] (TP2)",
-    "stem_s.getAltitude|block": "高度差[m] 基準圧%referencePressure",
+    "stem_s.getAltitude|block": "高度差[m] 基準面の気圧%referencePressure",
     "NeoPixelColors.Black|block": "黒"
 }

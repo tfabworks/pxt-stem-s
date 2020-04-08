@@ -96,7 +96,7 @@ namespace stem_s {
     }
 
     /**
-     * micro:bit本体の明るさセンサーが閾値より暗い（または明るい）場合に真を返します。
+     * micro:bit本体の明るさセンサーが、しきい値より暗い（または明るい）場合に真を返します。
      * @param lightThreshold number of brightness-threshold, eg: 15
      */
     //% blockId=brightness_determination_s

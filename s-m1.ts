@@ -14,7 +14,7 @@ namespace stem_s {
     }
 
     /**
-     * micro:bit本体の明るさセンサーが暗い場合（20未満）、かつ TFW-S-M1の人感センサーが反応しているとき真を返します。
+     * micro:bit本体の明るさセンサーが、しきい値より暗い、かつ TFW-S-M1の人感センサーが反応しているとき真を返します。
      * @param lightThreshold number of brightness - threshold, eg: 15
      */
     //% block="%lightThreshold|より暗いときに人が動いた"
@@ -75,7 +75,7 @@ namespace stem_s {
     */
 
     /**
-     * TFW-S-M1の温度センサー温度が、閾値より高い（または低い）場合に真を返します。
+     * TFW-S-M1の温度センサー温度が、しきい値より高い（または低い）場合に真を返します。
      * @param temperatureThreshold number of brightness-threshold, eg: 30
      */
     //% blockId=gt_temperature_high_s
