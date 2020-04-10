@@ -192,13 +192,18 @@ namespace stem_s {
     let led3: neopixel.Strip = null
     let strip2: neopixel.Strip = null
     let led_on_firsttime=true;
+    let led1_color: NeoPixelColors = NeoPixelColors.Black
+    let led2_color: NeoPixelColors = NeoPixelColors.Black
+    let led3_color: NeoPixelColors = NeoPixelColors.Black
+
     /**
-     * 
+     * @param brightness_percent number of brightness, eg: 100
      */
     //% blockId=stem_s_ledon
-    //% block="%ledを%colorにする"
+    //% block="%led|を明るさ%brightness_percent|\\%で%color|にする"
     //% group="S-M1"
-    export function led_on( led: LED_s, color: NeoPixelColors) {
+    //% brightness_percent.min=0 brightness_percent.max=100
+    export function led_on(led: LED_s, brightness_percent:number, color: NeoPixelColors ) {
         if ( led_on_firsttime == true) {
             strip2 = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
             led1 = strip2.range(0, 1)
@@ -208,14 +213,20 @@ namespace stem_s {
         }
 
         if ( led == LED_s.LED1 ) {
+            led1.setBrightness(brightness_percent);
             led1.showColor(neopixel.colors(color))
+            led1_color = color;
         }
         else if ( led == LED_s.LED2) {
+            led2.setBrightness(brightness_percent);
             led2.showColor(neopixel.colors(color))
+            led2_color = color;
         }
         else if (led == LED_s.LED3) {
+            led3.setBrightness(brightness_percent);
             led3.showColor(neopixel.colors(color))
-        }        
+            led3_color = color;
+        }
     }
     
 }
