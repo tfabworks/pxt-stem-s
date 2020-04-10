@@ -194,9 +194,10 @@ namespace stem_s {
     let led_on_firsttime=true;
 
     /**
+     * TFW-S-M1のフルカラーLEDを指定の箇所のLEDを指定の明るさで点灯させます。
      * @param brightness_percent number of brightness, eg: 100
      */
-    //% blockId=stem_s_ledon
+    //% blockId=stem_s_led_on
     //% block="%led|を明るさ%brightness_percent|\\%で%color|にする"
     //% group="S-M1"
     //% brightness_percent.min=0 brightness_percent.max=100
@@ -225,6 +226,37 @@ namespace stem_s {
             led_on(LED_s.LED1, brightness_percent, color);
             led_on(LED_s.LED2, brightness_percent, color);
             led_on(LED_s.LED3, brightness_percent, color);
+        }
+    }
+
+    /**
+     * TFW-S-M1のフルカラーLEDを赤・緑・青の明るさを0-255で指定して点灯させます。
+     */
+    //% blockId=stem_s_led_rgb
+    //% block="%led 赤%colog_r 緑%colog_g 青%colog_b"
+    //% group="S-M1"
+    export function led_rgb(led: LED_s, color_r: number, color_g: number, color_b: number ) {
+        if (led_on_firsttime == true) {
+            strip2 = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
+            led1 = strip2.range(0, 1)
+            led2 = strip2.range(1, 1)
+            led3 = strip2.range(2, 1)
+            led_on_firsttime = false;
+        }
+
+        if (led == LED_s.LED1) {
+            led1.showColor(neopixel.colors(neopixel.rgb(color_r, color_g, color_b)))
+        }
+        else if (led == LED_s.LED2) {
+            led2.showColor(neopixel.colors(neopixel.rgb(color_r, color_g, color_b)))
+        }
+        else if (led == LED_s.LED3) {
+            led3.showColor(neopixel.colors(neopixel.rgb(color_r, color_g, color_b)))
+        }
+        else if (led == LED_s.LED_ALL) {
+            led_rgb(LED_s.LED1, color_r, color_g, color_b);
+            led_rgb(LED_s.LED2, color_r, color_g, color_b);
+            led_rgb(LED_s.LED3, color_r, color_g, color_b);
         }
     }
 }
