@@ -22,7 +22,9 @@ enum OutputNumberFormat_s {
 enum LED_s{
     LED1,
     LED2,
-    LED3
+    LED3,
+    //% block="全てのLED"
+    LED_ALL
 }
 
 //% groups='["micro:bit本体", "S-M1", "DS1", "IR2", "TP2", "KR1"]'

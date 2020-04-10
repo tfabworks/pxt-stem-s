@@ -192,9 +192,6 @@ namespace stem_s {
     let led3: neopixel.Strip = null
     let strip2: neopixel.Strip = null
     let led_on_firsttime=true;
-    let led1_color: NeoPixelColors = NeoPixelColors.Black
-    let led2_color: NeoPixelColors = NeoPixelColors.Black
-    let led3_color: NeoPixelColors = NeoPixelColors.Black
 
     /**
      * @param brightness_percent number of brightness, eg: 100
@@ -215,18 +212,19 @@ namespace stem_s {
         if ( led == LED_s.LED1 ) {
             led1.setBrightness(brightness_percent);
             led1.showColor(neopixel.colors(color))
-            led1_color = color;
         }
         else if ( led == LED_s.LED2) {
             led2.setBrightness(brightness_percent);
             led2.showColor(neopixel.colors(color))
-            led2_color = color;
         }
-        else if (led == LED_s.LED3) {
+        else if ( led == LED_s.LED3 ) {
             led3.setBrightness(brightness_percent);
             led3.showColor(neopixel.colors(color))
-            led3_color = color;
+        }
+        else if ( led == LED_s.LED_ALL ) {
+            led_on(LED_s.LED1, brightness_percent, color);
+            led_on(LED_s.LED2, brightness_percent, color);
+            led_on(LED_s.LED3, brightness_percent, color);
         }
     }
-    
 }

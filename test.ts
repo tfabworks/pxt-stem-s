@@ -1,1 +1,1 @@
-stem_s.led_on(LED_s.LED3, 2, NeoPixelColors.Blue)
+stem_s.led_on(LED_s.LED_ALL, 2, NeoPixelColors.White)
