@@ -231,10 +231,17 @@ namespace stem_s {
 
     /**
      * TFW-S-M1のフルカラーLEDを赤・緑・青の明るさを0-255で指定して点灯させます。
+     * @param color_r number, eg: 255
+     * @param color_g number, eg: 255
+     * @param color_b number, eg: 255
      */
     //% blockId=stem_s_led_rgb
     //% block="%led 赤%colog_r 緑%colog_g 青%colog_b"
     //% group="S-M1"
+    //% color_r.min=0 color_r.max=255
+    //% color_g.min=0 color_g.max=255
+    //% color_b.min=0 color_b.max=255
+
     export function led_rgb(led: LED_s, color_r: number, color_g: number, color_b: number ) {
         if (led_on_firsttime == true) {
             strip2 = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
@@ -243,20 +250,6 @@ namespace stem_s {
             led3 = strip2.range(2, 1)
             led_on_firsttime = false;
         }
-
-        if (led == LED_s.LED1) {
-            led1.showColor(neopixel.colors(neopixel.rgb(color_r, color_g, color_b)))
-        }
-        else if (led == LED_s.LED2) {
-            led2.showColor(neopixel.colors(neopixel.rgb(color_r, color_g, color_b)))
-        }
-        else if (led == LED_s.LED3) {
-            led3.showColor(neopixel.colors(neopixel.rgb(color_r, color_g, color_b)))
-        }
-        else if (led == LED_s.LED_ALL) {
-            led_rgb(LED_s.LED1, color_r, color_g, color_b);
-            led_rgb(LED_s.LED2, color_r, color_g, color_b);
-            led_rgb(LED_s.LED3, color_r, color_g, color_b);
-        }
+        led_on(led, 100, neopixel.colors(neopixel.rgb(color_r, color_g, color_b)) )
     }
 }
