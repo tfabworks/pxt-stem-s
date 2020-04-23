@@ -208,6 +208,7 @@ namespace stem_s {
             led2 = strip2.range(1, 1)
             led3 = strip2.range(2, 1)
             led_on_firsttime = false;
+            led_on(LED_s.LED_ALL, 100, NeoPixelColors.Black)
         }
 
         if ( led == LED_s.LED1 ) {
@@ -227,6 +228,7 @@ namespace stem_s {
             led_on(LED_s.LED2, brightness_percent, color);
             led_on(LED_s.LED3, brightness_percent, color);
         }
+        basic.pause(1)
     }
 
     /**
