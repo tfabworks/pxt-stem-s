@@ -58,22 +58,6 @@ namespace stem_s {
         pins.analogWritePin(AnalogPin.P12, (duty / 100 * 1023));
     }
 
-
-    /**
-     * TFW-S-M1の温度センサーが熱い場合（30℃超）に真を返します。
-     */
-    /*
-    //% blockId=is_temperature_high_s
-    //% block="is hot"
-    //% group="S-M1"
-    export function isTemperatureHigh(): boolean {
-        if (getTemperature(OutputNumberFormat_s.FLOAT) > 30) {
-            return true;
-        }
-        return false;
-    }
-    */
-
     /**
      * TFW-S-M1の温度センサー温度が、しきい値より高い（または低い）場合に真を返します。
      * @param temperatureThreshold number of brightness-threshold, eg: 30
