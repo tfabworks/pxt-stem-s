@@ -178,7 +178,7 @@ namespace stem_s {
     let led_on_firsttime=true;
 
     /**
-     * TFW-S-M1のフルカラーLEDを指定の箇所のLEDを指定の明るさで点灯させます。
+     * TFW-S-M1のフルカラーLEDの指定の場所を指定の明るさで点灯させます。
      * @param brightness_percent number of brightness, eg: 100
      */
     //% blockId=stem_s_led_on
