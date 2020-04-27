@@ -235,7 +235,6 @@ namespace stem_s {
     
     /**
      * TFW-S-M1のフルカラーLEDの色を設定します。
-     * @param brightness_percent number of brightness, eg: 100
      */
     //% blockId=stem_s_led_on
     //% block="%led|を%color|にする"
