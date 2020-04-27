@@ -171,48 +171,91 @@ namespace stem_s {
         }
     }
 
+    const DEFAULT_BRIGHTNESS_PERCENT = 50;
     let led1: neopixel.Strip = null
     let led2: neopixel.Strip = null
     let led3: neopixel.Strip = null
     let strip2: neopixel.Strip = null
     let led_on_firsttime=true;
+    let led1_brighness_percent: number = DEFAULT_BRIGHTNESS_PERCENT;
+    let led2_brighness_percent: number = DEFAULT_BRIGHTNESS_PERCENT;
+    let led3_brighness_percent: number = DEFAULT_BRIGHTNESS_PERCENT;
+    let led1_color = NeoPixelColors.Black;
+    let led2_color = NeoPixelColors.Black;
+    let led3_color = NeoPixelColors.Black;
 
-    /**
-     * TFW-S-M1のフルカラーLEDの指定の場所を指定の明るさで点灯させます。
-     * @param brightness_percent number of brightness, eg: 100
-     */
-    //% blockId=stem_s_led_on
-    //% block="%led|を明るさ%brightness_percent|\\%で%color|にする"
-    //% group="S-M1"
-    //% brightness_percent.min=0 brightness_percent.max=100
-    export function led_on(led: LED_s, brightness_percent:number, color: NeoPixelColors ) {
+
+    function led_show_color() {
         if ( led_on_firsttime == true) {
             strip2 = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
             led1 = strip2.range(0, 1)
             led2 = strip2.range(1, 1)
             led3 = strip2.range(2, 1)
             led_on_firsttime = false;
-            led_on(LED_s.LED_ALL, 100, NeoPixelColors.Black)
+            led_set_color(LED_s.LED_ALL, NeoPixelColors.Black)
         }
 
+
+        led1.setBrightness( 255.0 / 100.0 * led1_brightness_percent);
+        led1.showColor(led1_color)
+        basic.pause(1)
+        led2.setBrightness( 255.0 / 100.0 * led2_brightness_percent);
+        led2.showColor(led2_color)
+        basic.pause(1)
+        led3.setBrightness( 255.0 / 100.0 * led3_brightness_percent);
+        led3.showColor(led3_color)
+        basic.pause(1)
+    }
+
+    /**
+     * TFW-S-M1のフルカラーLEDの明るさを設定します。
+     * @param brightness_percent number of brightness, eg: 50
+     */
+    //% blockId=stem_s_led_on
+    //% block="%led|を明るさ%brightness_percent|\\%にする"
+    //% group="S-M1"
+    //% brightness_percent.min=0 brightness_percent.max=100
+    export function led_set_brightness(led: LED_s, brightness_percent:number ) {
         if ( led == LED_s.LED1 ) {
-            led1.setBrightness(brightness_percent);
-            led1.showColor(neopixel.colors(color))
+            led1_brighness_percent = brightness_percent
         }
-        else if ( led == LED_s.LED2) {
-            led2.setBrightness(brightness_percent);
-            led2.showColor(neopixel.colors(color))
+        else if ( led == LED_s.LED2 ) {
+            led2_brighness_percent = brightness_percent
         }
         else if ( led == LED_s.LED3 ) {
-            led3.setBrightness(brightness_percent);
-            led3.showColor(neopixel.colors(color))
+            led3_brighness_percent = brightness_percent
         }
         else if ( led == LED_s.LED_ALL ) {
-            led_on(LED_s.LED1, brightness_percent, color);
-            led_on(LED_s.LED2, brightness_percent, color);
-            led_on(LED_s.LED3, brightness_percent, color);
+            led1_brighness_percent = brightness_percent
+            led2_brighness_percent = brightness_percent
+            led3_brighness_percent = brightness_percent
         }
-        basic.pause(1)
+        led_show_color()
+    }
+    
+    /**
+     * TFW-S-M1のフルカラーLEDの色を設定します。
+     * @param brightness_percent number of brightness, eg: 100
+     */
+    //% blockId=stem_s_led_on
+    //% block="%led|を%color|にする"
+    //% group="S-M1"
+    export function led_set_color(led: LED_s, color: NeoPixelColors ) {
+        if ( led == LED_s.LED1 ) {
+            led1_color = neopixel.colors(color)
+        }
+        else if ( led == LED_s.LED2) {
+            led2_color = neopixel.colors(color)
+        }
+        else if ( led == LED_s.LED3 ) {
+            led3_color = neopixel.colors(color)
+        }
+        else if ( led == LED_s.LED_ALL ) {
+            led_set_color(LED_s.LED1, color);
+            led_set_color(LED_s.LED2, color);
+            led_set_color(LED_s.LED3, color);
+        }
+        led_show_color()
     }
 
     /**
@@ -236,6 +279,6 @@ namespace stem_s {
             led3 = strip2.range(2, 1)
             led_on_firsttime = false;
         }
-        led_on(led, 100, neopixel.colors(neopixel.rgb(color_r, color_g, color_b)) )
+        led_set_color(led, neopixel.colors(neopixel.rgb(color_r, color_g, color_b)) )
     }
 }

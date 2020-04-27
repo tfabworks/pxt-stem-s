@@ -23,7 +23,7 @@ enum LED_s{
     LED1,
     LED2,
     LED3,
-    //% block="全てのLED"
+    //% block="LED1,2,3"
     LED_ALL
 }
 
