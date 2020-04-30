@@ -171,15 +171,15 @@ namespace stem_s {
         }
     }
 
-    const DEFAULT_BRIGHTNESS_PERCENT = 50;
+    const DEFAULT_BRIGHTNESS_PERCENT = 20;
     let led1: neopixel.Strip = null
     let led2: neopixel.Strip = null
     let led3: neopixel.Strip = null
     let strip2: neopixel.Strip = null
     let led_on_firsttime=true;
-    let led1_brighness_percent: number = DEFAULT_BRIGHTNESS_PERCENT;
-    let led2_brighness_percent: number = DEFAULT_BRIGHTNESS_PERCENT;
-    let led3_brighness_percent: number = DEFAULT_BRIGHTNESS_PERCENT;
+    let led1_brightness_percent: number = DEFAULT_BRIGHTNESS_PERCENT;
+    let led2_brightness_percent: number = DEFAULT_BRIGHTNESS_PERCENT;
+    let led3_brightness_percent: number = DEFAULT_BRIGHTNESS_PERCENT;
     let led1_color = NeoPixelColors.Black;
     let led2_color = NeoPixelColors.Black;
     let led3_color = NeoPixelColors.Black;
@@ -192,9 +192,7 @@ namespace stem_s {
             led2 = strip2.range(1, 1)
             led3 = strip2.range(2, 1)
             led_on_firsttime = false;
-            led_set_color(LED_s.LED_ALL, NeoPixelColors.Black)
         }
-
 
         led1.setBrightness( 255.0 / 100.0 * led1_brightness_percent);
         led1.showColor(led1_color)
@@ -211,24 +209,24 @@ namespace stem_s {
      * TFW-S-M1のフルカラーLEDの明るさを設定します。
      * @param brightness_percent number of brightness, eg: 50
      */
-    //% blockId=stem_s_led_on
+    //% blockId=stem_s_set_brightness
     //% block="%led|を明るさ%brightness_percent|\\%にする"
     //% group="S-M1"
     //% brightness_percent.min=0 brightness_percent.max=100
     export function led_set_brightness(led: LED_s, brightness_percent:number ) {
         if ( led == LED_s.LED1 ) {
-            led1_brighness_percent = brightness_percent
+            led1_brightness_percent = brightness_percent
         }
         else if ( led == LED_s.LED2 ) {
-            led2_brighness_percent = brightness_percent
+            led2_brightness_percent = brightness_percent
         }
         else if ( led == LED_s.LED3 ) {
-            led3_brighness_percent = brightness_percent
+            led3_brightness_percent = brightness_percent
         }
         else if ( led == LED_s.LED_ALL ) {
-            led1_brighness_percent = brightness_percent
-            led2_brighness_percent = brightness_percent
-            led3_brighness_percent = brightness_percent
+            led1_brightness_percent = brightness_percent
+            led2_brightness_percent = brightness_percent
+            led3_brightness_percent = brightness_percent
         }
         led_show_color()
     }
@@ -236,7 +234,7 @@ namespace stem_s {
     /**
      * TFW-S-M1のフルカラーLEDの色を設定します。
      */
-    //% blockId=stem_s_led_on
+    //% blockId=stem_s_led_set_color
     //% block="%led|を%color|にする"
     //% group="S-M1"
     export function led_set_color(led: LED_s, color: NeoPixelColors ) {
