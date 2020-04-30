@@ -206,6 +206,30 @@ namespace stem_s {
     }
 
     /**
+     * TFW-S-M1のフルカラーLEDの色を設定します。
+     */
+    //% blockId=stem_s_led_set_color
+    //% block="%led|を%color|にする"
+    //% group="S-M1"
+    export function led_set_color(led: LED_s, color: NeoPixelColors) {
+        if (led == LED_s.LED1) {
+            led1_color = neopixel.colors(color)
+        }
+        else if (led == LED_s.LED2) {
+            led2_color = neopixel.colors(color)
+        }
+        else if (led == LED_s.LED3) {
+            led3_color = neopixel.colors(color)
+        }
+        else if (led == LED_s.LED_ALL) {
+            led_set_color(LED_s.LED1, color);
+            led_set_color(LED_s.LED2, color);
+            led_set_color(LED_s.LED3, color);
+        }
+        led_show_color()
+    }
+    
+    /**
      * TFW-S-M1のフルカラーLEDの明るさを設定します。
      * @param brightness_percent number of brightness, eg: 50
      */
@@ -227,30 +251,6 @@ namespace stem_s {
             led1_brightness_percent = brightness_percent
             led2_brightness_percent = brightness_percent
             led3_brightness_percent = brightness_percent
-        }
-        led_show_color()
-    }
-    
-    /**
-     * TFW-S-M1のフルカラーLEDの色を設定します。
-     */
-    //% blockId=stem_s_led_set_color
-    //% block="%led|を%color|にする"
-    //% group="S-M1"
-    export function led_set_color(led: LED_s, color: NeoPixelColors ) {
-        if ( led == LED_s.LED1 ) {
-            led1_color = neopixel.colors(color)
-        }
-        else if ( led == LED_s.LED2) {
-            led2_color = neopixel.colors(color)
-        }
-        else if ( led == LED_s.LED3 ) {
-            led3_color = neopixel.colors(color)
-        }
-        else if ( led == LED_s.LED_ALL ) {
-            led_set_color(LED_s.LED1, color);
-            led_set_color(LED_s.LED2, color);
-            led_set_color(LED_s.LED3, color);
         }
         led_show_color()
     }
