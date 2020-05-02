@@ -171,7 +171,7 @@ namespace stem_s {
         }
     }
 
-    const DEFAULT_BRIGHTNESS_PERCENT = 20;
+    const DEFAULT_BRIGHTNESS_PERCENT = 25;
     let led1: neopixel.Strip = null
     let led2: neopixel.Strip = null
     let led3: neopixel.Strip = null
@@ -194,13 +194,13 @@ namespace stem_s {
             led_on_firsttime = false;
         }
 
-        led1.setBrightness( 255.0 / 100.0 * led1_brightness_percent);
+        led1.setBrightness( led1_brightness_percent);
         led1.showColor(led1_color)
         basic.pause(1)
-        led2.setBrightness( 255.0 / 100.0 * led2_brightness_percent);
+        led2.setBrightness( led2_brightness_percent);
         led2.showColor(led2_color)
         basic.pause(1)
-        led3.setBrightness( 255.0 / 100.0 * led3_brightness_percent);
+        led3.setBrightness( led3_brightness_percent);
         led3.showColor(led3_color)
         basic.pause(1)
     }
@@ -231,7 +231,7 @@ namespace stem_s {
     
     /**
      * TFW-S-M1のフルカラーLEDの明るさを設定します。
-     * @param brightness_percent number of brightness, eg: 50
+     * @param brightness_percent number of brightness, eg: 25
      */
     //% blockId=stem_s_set_brightness
     //% block="%led|を明るさ%brightness_percent|\\%にする"
