@@ -48,18 +48,18 @@ namespace stem_s {
 
     /**
      * TFW-S-M1のスイッチの出力をコントロールします。
-     * @param duty set the duty-ratio, eg: 100
+     * @param duty_percent set the duty-ratio, eg: 50
      */
     //% blockId=sw1_out_s
     //% block="Output %duty\\%"
-    //% duty.min=0 duty.max=100
+    //% duty_percent.min=0 duty_percent.max=100
     //% group="S-M1"
     export function sw1_out(duty_percent: number): void {
-        if ( duty_percent == 100 ) {
+        if ( duty_percent >= 100 ) {
             turnON();
             return;
         }
-        else if ( duty_percent == 0 ) {
+        else if ( duty_percent <= 0 ) {
             turnOFF();
             return;
         }
