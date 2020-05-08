@@ -54,8 +54,20 @@ namespace stem_s {
     //% block="Output %duty\\%"
     //% duty.min=0 duty.max=100
     //% group="S-M1"
-    export function sw1_out(duty: number): void {
-        pins.analogWritePin(AnalogPin.P12, (duty / 100 * 1023));
+    export function sw1_out(duty_percent: number): void {
+        if ( duty_percent == 100 ) {
+            turnON();
+            return;
+        }
+        else if ( duty_percent == 0 ) {
+            turnOFF();
+            return;
+        }
+        set_pulse_width_p12( duty_percent / 100.0 * 20000 )
+    }
+    //% shim=stem_s::set_pulse_width_p12
+    function set_pulse_width_p12(pw_us: number): void {
+        return;
     }
 
     /**

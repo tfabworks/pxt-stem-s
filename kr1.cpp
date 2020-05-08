@@ -6,14 +6,18 @@ namespace stem_s {
 
     Ticker tk1;
     Ticker tk2;
+    Ticker tk12;
 
     const float PERIOD = 0.02;
 	void set_pulse_width_p1(int pw_us);
 	void set_pulse_width_p2(int pw_us);
+	void set_pulse_width_p12(int pw_us);
     void generate_pwm_p1();
     void generate_pwm_p2();
+    void generate_pwm_p12();
     float pulse_width_us1 = 1500.0;
     float pulse_width_us2 = 1500.0;
+    float pulse_width_us12 = 1500.0;
         
 
 
@@ -36,6 +40,16 @@ namespace stem_s {
         tk2.attach(&generate_pwm_p2, 0.02);
 	}
 
+    /**
+     * Configure the P12 pin for OptoCoupler-Switch
+     */
+    //%
+	void set_pulse_width_p12(int pw_us){
+        pulse_width_us12 = pw_us;
+        tk12.attach(&generate_pwm_p12, 0.02);
+	}
+
+
     //%
     void stop_p1(){
         tk1.detach();
@@ -45,6 +59,12 @@ namespace stem_s {
     void stop_p2(){
         tk2.detach();
     }
+
+    //%
+    void stop_p12(){
+        tk12.detach();
+    }
+
 
     #ifndef DELAY_ADJUST_US
     #define DELAY_ADJUST_US 55
@@ -67,5 +87,17 @@ namespace stem_s {
             wait( (pulse_width_us2-60)/1000000.0 );
             servo2 = 0;
     }
+
+    /**
+     * generate pwm waveform on P12
+     */
+    void generate_pwm_p12(){
+            DigitalOut p12(MICROBIT_PIN_P12);
+            p12 = 1;
+            wait( (pulse_width_us12)/1000000.0 );
+            p12 = 0;
+    }
+ 
+
     #endif /*DELAY_ADJUST_US*/
 }
