@@ -32,24 +32,6 @@ namespace stem_s {
     }
 
     /**
-     * 出力を設定
-     */
-    //% blockId=setSwitchRatio
-    //% block="出力%output_percent|percent"
-    //% group="NEW"
-    export function setSwitchRatio(output_percent: number): void {
-        if ( output_percent == 100 ) {
-            turnON();
-            return;
-        }
-        else if ( output_percent == 0 ) {
-            turnOFF();
-            return;
-        }
-        set_pulse_width_p12( output_percent/100.0 * 20000 )
-    }
-
-    /**
      * 指定の幅（マイクロ秒）のサーボ信号を出力します。音楽のブロックと同時に使用できます
      * @param usec the width of the pulse in microseconds
      */
