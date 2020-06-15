@@ -8,6 +8,7 @@ namespace stem_s {
     //% blockId = TP2_getTemperature_s
     //% block="Temperature[degC] (TP2) || %format"
     //% group="TP2"
+    //% weight=100
     export function TP2_getTemperature(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         TP2_init_if_firsttime();
         if (format === OutputNumberFormat_s.INTEGER) {

@@ -24,6 +24,7 @@ namespace stem_s {
     //% blockId=kr1servoSetangle_s
     //% block="サーボ %KR1_SERVO_PORT 角度 %degrees=protractorPicker °"
     //% group="KR1"
+    //% weight=100
     export function setAngle(port: KR1_SERVO_PORT_s, degrees: number): void {
         degrees = clampDegrees(degrees);
         let usec = (500000 + (2000 * (degrees * 1000 / 180))) / 1000;
@@ -41,6 +42,7 @@ namespace stem_s {
     //% usec.min=500 usec.max=2500
     //% usec.defl=1500
     //% group="KR1"
+    //% weight=90
     export function setPulseWidth(port: KR1_SERVO_PORT_s, usec: number): void {
         if (port == KR1_SERVO_PORT_s.P1) {
             set_pulse_width_p1(usec);
@@ -60,6 +62,7 @@ namespace stem_s {
      */
     //% blockId=kr1servoRun_s block="連続回転サーボ %port 回転速度 %speed=speedPicker \\%"
     //% group="KR1"
+    //% weight=80
     export function run(port: KR1_SERVO_PORT_s, speed: number): void {
         const degrees = clampDegrees(Math.map(speed, -100, 100, _minAngle, _maxAngle));
         const neutral = (_maxAngle - _minAngle) / 2;
@@ -77,6 +80,7 @@ namespace stem_s {
     //  blockId=kr1servoStop block="stop %port"
     //% blockId=kr1servoStop_s block="連続回転サーボ %port 止める"
     //% group="KR1"
+    //% weight=70
     export function stop(port: KR1_SERVO_PORT_s): void {
         if (port == KR1_SERVO_PORT_s.P1) {
             stop_p1();

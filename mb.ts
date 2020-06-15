@@ -105,6 +105,7 @@ namespace stem_s {
     //% block="Than %lightThreshold, %settingDarkOrBright"
     //% lightThreshold.min=0 lightThreshold.max=255
     //% group="micro:bit本体"
+    //% weight=100
     export function brightnessDetermination(lightThreshold: number, settingDarkOrBright: DarkOrBrightSpecified_s): boolean {
         if (_HYSTERESIS < 0) { control.assert(false); }
         if (lightThreshold < 0) {
@@ -142,6 +143,7 @@ namespace stem_s {
     //% blockId=is_move_s
     //% block="micro:bit is moving"
     //% group="micro:bit本体"
+    //% weight=90
     export function isMove(): boolean {
         if (is_acc_first_time) {
             acceleration = input.acceleration(Dimension.Strength)
@@ -164,6 +166,7 @@ namespace stem_s {
     //% blockId=stem_s_showGraph
     //% block="%data|をグラフで表示"
     //% group="micro:bit本体"
+    //% weight=80
     export function showGraph( data :number ) {
         serial.redirectToUSB();
         serial.writeLine(data.toString());

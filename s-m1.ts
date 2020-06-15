@@ -5,6 +5,7 @@ namespace stem_s {
      */
     //% blockId=human_detection_s block="Is Human moving"
     //% group="S-M1"
+    //% weight=100
     export function humanDetection(): boolean {
         if (pins.digitalReadPin(DigitalPin.P13) == 1) {
             return true;
@@ -21,6 +22,7 @@ namespace stem_s {
     //% group="S-M1"
     //% blockId=isHumanDetectionAndDark_s
     //% lightThreshold.min=0 lightThreshold.max=255
+    //% weight=95
     export function isHumanDetectionAndDark(lightThreshold:number): boolean {
         if (humanDetection() && brightnessDetermination(lightThreshold, DarkOrBrightSpecified_s.IS_DARK ) ) {
             return true;
@@ -33,6 +35,7 @@ namespace stem_s {
      */
     //% blockId=turn_on_s block="Switch Turn ON"
     //% group="S-M1"
+    //% weight=80
     export function turnON(): void {
         pins.digitalWritePin(DigitalPin.P12,1);
     }
@@ -42,6 +45,7 @@ namespace stem_s {
      */
     //% blockId=turn_off_s block="Switch Turn OFF"
     //% group="S-M1"
+    //% weight=90
     export function turnOFF(): void {
         pins.digitalWritePin(DigitalPin.P12, 0);
     }
@@ -54,6 +58,7 @@ namespace stem_s {
     //% block="Output %duty\\%"
     //% duty_percent.min=0 duty_percent.max=100
     //% group="S-M1"
+    //% weight=85
     export function sw1_out(duty_percent: number): void {
         if ( duty_percent >= 100 ) {
             turnON();
@@ -77,6 +82,7 @@ namespace stem_s {
     //% blockId=gt_temperature_high_s
     //% block="Than %temperatureThreshold|degC, %settingHotOrCold"
     //% group="S-M1"
+    //% weight=80
     export function gtTemperatureHigh(temperatureThreshold: number, settingHotCold: SettingHotCold_s): boolean {
         if (settingHotCold === SettingHotCold_s.HOT) {
             if (getTemperature(OutputNumberFormat_s.FLOAT) > temperatureThreshold) {
@@ -102,6 +108,7 @@ namespace stem_s {
      */
     //% blockId=get_temperature_s block="Temperature[degC] (S-M1) || %format"
     //% group="S-M1"
+    //% weight=75
     export function getTemperature(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
         if (format === OutputNumberFormat_s.INTEGER) {
@@ -116,6 +123,7 @@ namespace stem_s {
      */
     //% blockId=get_humidity_s block="Humidity[\\%] || %format"
     //% group="S-M1"
+    //% weight=70
     export function getHumidity(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
         if (format === OutputNumberFormat_s.INTEGER) {
@@ -130,6 +138,7 @@ namespace stem_s {
      */
     //% blockId=get_pressure_s block="Pressure[hPa] || %format"
     //% group="S-M1"
+    //% weight=65
     export function getPressure(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
         if (format === OutputNumberFormat_s.INTEGER) {
@@ -145,6 +154,7 @@ namespace stem_s {
      */
     //% blockId=get_altitude_s block="Altitude[m] Pressure at reference level%referencePressure| || %format"
     //% group="S-M1"
+    //% weight=60
     export function getAltitude(referencePressure: number = 1013, format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
         EN1_init_if_firsttime();
         if (format === OutputNumberFormat_s.INTEGER) {
@@ -223,6 +233,7 @@ namespace stem_s {
     //% blockId=stem_s_led_set_color
     //% block="%led|を%color|にする"
     //% group="S-M1"
+    //% weight=55
     export function led_set_color(led: LED_s, color: NeoPixelColors) {
         if (led == LED_s.LED1) {
             led1_color = neopixel.colors(color)
@@ -249,6 +260,7 @@ namespace stem_s {
     //% block="%led|を明るさ%brightness_percent|\\%にする"
     //% group="S-M1"
     //% brightness_percent.min=0 brightness_percent.max=100
+    //% weight=50
     export function led_set_brightness(led: LED_s, brightness_percent:number ) {
         if ( led == LED_s.LED1 ) {
             led1_brightness_percent = brightness_percent
@@ -279,7 +291,7 @@ namespace stem_s {
     //% color_r.min=0 color_r.max=255
     //% color_g.min=0 color_g.max=255
     //% color_b.min=0 color_b.max=255
-
+    //% weight=45
     export function led_rgb(led: LED_s, color_r: number, color_g: number, color_b: number ) {
         if (led_on_firsttime == true) {
             strip2 = neopixel.create(DigitalPin.P16, 3, NeoPixelMode.RGB)
