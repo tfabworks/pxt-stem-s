@@ -224,7 +224,7 @@ namespace stem_s {
         }
     }
 
-    const DEFAULT_BRIGHTNESS_PERCENT = 25;
+    const DEFAULT_BRIGHTNESS_PERCENT = 100;
     let led1: neopixel.Strip = null
     let led2: neopixel.Strip = null
     let led3: neopixel.Strip = null
