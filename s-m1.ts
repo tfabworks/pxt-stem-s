@@ -265,7 +265,7 @@ namespace stem_s {
     //% block="%led|を%color|にする"
     //% group="S-M1"
     //% weight=40
-    export function led_set_color(led: LED_s, color: NeoPixelColors_s) {
+    export function led_set_color(led: LED_s, color_s: NeoPixelColors_s) {
 
         let color = NeoPixelColors.Black
         if ( color_s == NeoPixelColors_s.Black ) {
