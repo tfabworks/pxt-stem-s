@@ -1,3 +1,34 @@
+enum LED_s{
+    //% block="LED1,2,3"
+    LED_ALL,
+    LED1,
+    LED2,
+    LED3
+}
+
+enum NeoPixelColors_s {
+    //% block=white
+    White = 0xFFFFFF,
+    //% block=black
+    Black = 0x000000,
+    //% block=red
+    Red = 0xFF0000,
+    //% block=orange
+    Orange = 0xFFA500,
+    //% block=yellow
+    Yellow = 0xFFFF00,
+    //% block=green
+    Green = 0x00FF00,
+    //% block=blue
+    Blue = 0x0000FF,
+    //% block=indigo
+    Indigo = 0x4b0082,
+    //% block=violet
+    Violet = 0x8a2be2,
+    //% block=purple
+    Purple = 0xFF00FF
+}
+
 namespace stem_s {
 
     /**
@@ -234,7 +265,7 @@ namespace stem_s {
     //% block="%led|を%color|にする"
     //% group="S-M1"
     //% weight=40
-    export function led_set_color(led: LED_s, color: NeoPixelColors) {
+    export function led_set_color(led: LED_s, color: NeoPixelColors_s) {
         if (led == LED_s.LED1) {
             led1_color = neopixel.colors(color)
         }

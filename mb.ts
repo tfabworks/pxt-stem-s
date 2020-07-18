@@ -19,14 +19,6 @@ enum OutputNumberFormat_s {
     FLOAT = 1
 }
 
-enum LED_s{
-    LED1,
-    LED2,
-    LED3,
-    //% block="LED1,2,3"
-    LED_ALL
-}
-
 //% groups='["micro:bit本体", "S-M1", "DS1", "IR2", "TP2", "KR1"]'
 //% weight=71 icon="\uf0c3" color=#c13300 block="STEM-S"
 namespace stem_s {
