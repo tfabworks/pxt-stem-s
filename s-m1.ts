@@ -309,9 +309,9 @@ namespace stem_s {
             led3_color = neopixel.colors(color)
         }
         else if (led == LED_s.LED_ALL) {
-            led_set_color(LED_s.LED1, color);
-            led_set_color(LED_s.LED2, color);
-            led_set_color(LED_s.LED3, color);
+            led_set_color(LED_s.LED1, color_s);
+            led_set_color(LED_s.LED2, color_s);
+            led_set_color(LED_s.LED3, color_s);
         }
         led_show_color()
     }
