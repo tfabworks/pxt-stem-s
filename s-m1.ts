@@ -53,7 +53,7 @@ namespace stem_s {
     //% group="S-M1"
     //% blockId=isHumanDetectionAndDark_s
     //% lightThreshold.min=0 lightThreshold.max=255
-    //% weight=95
+    //% weight=15
     export function isHumanDetectionAndDark(lightThreshold:number): boolean {
         if (humanDetection() && brightnessDetermination(lightThreshold, DarkOrBrightSpecified_s.IS_DARK ) ) {
             return true;
@@ -266,47 +266,17 @@ namespace stem_s {
     //% group="S-M1"
     //% weight=40
     export function led_set_color(led: LED_s, color_s: NeoPixelColors_s) {
-
-        let color = NeoPixelColors.Black
-        if ( color_s == NeoPixelColors_s.Black ) {
-            color = NeoPixelColors.Black
-        }
-        else if ( color_s == NeoPixelColors_s.Blue) {
-            color = NeoPixelColors.Blue
-        }
-        else if (color_s == NeoPixelColors_s.Green) {
-            color = NeoPixelColors.Green
-        }
-        else if (color_s == NeoPixelColors_s.Indigo) {
-            color = NeoPixelColors.Indigo
-        }
-        else if (color_s == NeoPixelColors_s.Orange) {
-            color = NeoPixelColors.Orange
-        }
-        else if (color_s == NeoPixelColors_s.Purple) {
-            color = NeoPixelColors.Purple
-        }
-        else if (color_s == NeoPixelColors_s.Red) {
-            color = NeoPixelColors.Red
-        }
-        else if (color_s == NeoPixelColors_s.Violet) {
-            color = NeoPixelColors.Violet
-        }
-        else if (color_s == NeoPixelColors_s.White) {
-            color = NeoPixelColors.White
-        }
-        else if (color_s == NeoPixelColors_s.Yellow) {
-            color = NeoPixelColors.Yellow
-        }
+        let color: any
+        color = color_s
 
         if (led == LED_s.LED1) {
-            led1_color = neopixel.colors(color)
+            led1_color = neopixel.colors(color as NeoPixelColors)
         }
         else if (led == LED_s.LED2) {
-            led2_color = neopixel.colors(color)
+            led2_color = neopixel.colors(color as NeoPixelColors)
         }
         else if (led == LED_s.LED3) {
-            led3_color = neopixel.colors(color)
+            led3_color = neopixel.colors(color as NeoPixelColors)
         }
         else if (led == LED_s.LED_ALL) {
             led_set_color(LED_s.LED1, color_s);
@@ -364,6 +334,7 @@ namespace stem_s {
             led3 = strip2.range(2, 1)
             led_on_firsttime = false;
         }
+
         led_set_color(led, neopixel.colors(neopixel.rgb(color_r, color_g, color_b)) )
     }
 }
