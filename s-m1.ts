@@ -249,13 +249,13 @@ namespace stem_s {
 
         led1.setBrightness( led1_brightness_percent);
         led1.showColor(led1_color)
-        basic.pause(1)
+        control.waitMicros(400)
         led2.setBrightness( led2_brightness_percent);
         led2.showColor(led2_color)
-        basic.pause(1)
+        control.waitMicros(400)
         led3.setBrightness( led3_brightness_percent);
         led3.showColor(led3_color)
-        basic.pause(1)
+        control.waitMicros(400)
     }
 
     /**
