@@ -107,6 +107,11 @@ namespace stem_s {
         return;
     }
 
+    //% shim=stem_s::stop_p12
+    function stop_p12(): void {
+        return;
+    }
+    
     /**
      * TFW-S-M1の温度センサー温度が、しきい値より高い（または低い）場合に真を返します。
      * @param temperatureThreshold number of brightness-threshold, eg: 30
