@@ -78,6 +78,7 @@ namespace stem_s {
     //% group="S-M1"
     //% weight=75
     export function turnOFF(): void {
+        stop_p12();
         pins.digitalWritePin(DigitalPin.P12, 0);
     }
 
