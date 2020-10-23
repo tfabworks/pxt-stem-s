@@ -111,11 +111,5 @@ namespace stem_s {
     function stop_p2(): void {
         return;
     }
-
-    //% shim=stem_s::stop_p12
-    function stop_p12(): void {
-        return;
-    }
-
-
+    
 }
