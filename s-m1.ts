@@ -78,7 +78,6 @@ namespace stem_s {
     //% group="S-M1"
     //% weight=75
     export function turnOFF(): void {
-        stop_p12();
         pins.digitalWritePin(DigitalPin.P12, 0);
     }
 
@@ -100,16 +99,7 @@ namespace stem_s {
             turnOFF();
             return;
         }
-        set_pulse_width_p12( duty_percent / 100.0 * 20000 )
-    }
-    //% shim=stem_s::set_pulse_width_p12
-    function set_pulse_width_p12(pw_us: number): void {
-        return;
-    }
-
-    //% shim=stem_s::stop_p12
-    function stop_p12(): void {
-        return;
+        pins.analogWritePin( AnalogPin.P12, duty_percent / 100.0 * 1023 )
     }
     
     /**
