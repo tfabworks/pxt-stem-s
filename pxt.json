@@ -14,9 +14,7 @@
         "s-m1.ts",
         "ds1.ts",
         "ir2.ts",
-        "ir2.cpp",
         "en1.ts",
-        "shims.d.ts",
         "_locales/ja/stem_s-strings.json"
     ],
     "testFiles": [
@@ -24,6 +22,6 @@
         "test.blocks"
     ],
     "public": false,
-    "preferredEditor": "blocksprj",
+    "preferredEditor": "tsprj",
     "installedVersion": "workspace:6a4b7de1-fee5-46ce-184c-7bbc11243fd9"
 }
