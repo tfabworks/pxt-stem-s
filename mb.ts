@@ -19,7 +19,7 @@ enum OutputNumberFormat_s {
     FLOAT = 1
 }
 
-//% groups='["micro:bit本体", "S-M1", "DS1", "IR2", "TP2", "KR1"]'
+//% groups='["micro:bit本体", "S-M1", "TP2", "DS1"]'
 //% weight=71 icon="\uf0c3" color=#c13300 block="STEM-S"
 namespace stem_s {
     let _今まで暗い: boolean = false;

@@ -5,15 +5,7 @@ LED_s.LED_ALL,
 58,
 76
 )
+basic.showIcon(IconNames.Heart)
 basic.forever(function () {
-    stem_s.sw1_out(50)
-    basic.pause(500)
-    stem_s.sw1_out(0)
-    basic.pause(500)
-    stem_s.sw1_out(10)
-    basic.pause(500)
-    stem_s.sw1_out(0)
-    basic.pause(500)
-    stem_s.sw1_out(100)
-    basic.pause(500)
+    basic.showString("" + (stem_s.TP2_getTemperature(OutputNumberFormat_s.FLOAT)))
 })
