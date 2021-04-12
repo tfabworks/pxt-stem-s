@@ -163,5 +163,17 @@ namespace stem_s {
         serial.redirectToUSB();
         serial.writeLine(data.toString());
     }
+    
+    /**
+     * 指定された秒数の間、一時停止します。
+     * @param sec 秒, eg: 1
+     */
+    //% blockId=pause_sec
+    //% block="一時停止（秒）%sec"
+    //% group="micro:bit本体"
+    //% weight=75
+    export function pause_sec(sec: number) {
+        basic.pause(1000 * sec);
+    }
 
 }
