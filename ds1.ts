@@ -4,7 +4,7 @@ namespace stem_s {
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
     //% blockId=uds_s
-    //% block="Distance[cm] || %format"
+    //% block="距離[cm] || %format"
     //% group="DS1"
     //% weight=100
     export function getDistance(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER):number {

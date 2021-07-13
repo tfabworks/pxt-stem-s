@@ -7,25 +7,25 @@ enum LED_s{
 }
 
 enum NeoPixelColors_s {
-    //% block=white
+    //% block="白"
     White = 0xFFFFFF,
-    //% block=black
+    //% block="黒（消灯）"
     Black = 0x000000,
-    //% block=red
+    //% block="赤"
     Red = 0xFF0000,
-    //% block=orange
+    //% block="だいだい"
     Orange = 0xFFA500,
-    //% block=yellow
+    //% block="黄"
     Yellow = 0xFFFF00,
-    //% block=green
+    //% block="緑"
     Green = 0x00FF00,
-    //% block=blue
+    //% block="青"
     Blue = 0x0000FF,
-    //% block=indigo
+    //% block="あい"
     Indigo = 0x4b0082,
-    //% block=violet
+    //% block="すみれ"
     Violet = 0x8a2be2,
-    //% block=purple
+    //% block="紫"
     Purple = 0xFF00FF
 }
 
@@ -34,7 +34,7 @@ namespace stem_s {
     /**
      * TFW-S-M1の人感センサーが反応しているとき真を返します。
      */
-    //% blockId=human_detection_s block="Is Human moving"
+    //% blockId=human_detection_s block="人が動いた"
     //% group="S-M1"
     //% weight=100
     export function humanDetection(): boolean {
@@ -64,7 +64,7 @@ namespace stem_s {
     /**
      * TFW-S-M1のスイッチをONします。
      */
-    //% blockId=turn_on_s block="Switch Turn ON"
+    //% blockId=turn_on_s block="制御スイッチON"
     //% group="S-M1"
     //% weight=80
     export function turnON(): void {
@@ -74,7 +74,7 @@ namespace stem_s {
     /**
      * TFW-S-M1のスイッチをOFFします。
      */
-    //% blockId=turn_off_s block="Switch Turn OFF"
+    //% blockId=turn_off_s block="制御スイッチOFF"
     //% group="S-M1"
     //% weight=75
     export function turnOFF(): void {
@@ -86,7 +86,7 @@ namespace stem_s {
      * @param duty_percent set the duty-ratio, eg: 50
      */
     //% blockId=sw1_out_s
-    //% block="Output %duty\\%"
+    //% block="制御スイッチの出力を%duty|\\%にする"
     //% duty_percent.min=0 duty_percent.max=100
     //% group="S-M1"
     //% weight=70
@@ -107,7 +107,7 @@ namespace stem_s {
      * @param temperatureThreshold number of brightness-threshold, eg: 30
      */
     //% blockId=gt_temperature_high_s
-    //% block="Than %temperatureThreshold|degC, %settingHotOrCold"
+    //% block="%temperatureThreshold|℃より%settingHotOrCold|"
     //% group="S-M1"
     //% weight=65
     export function gtTemperatureHigh(temperatureThreshold: number, settingHotCold: SettingHotCold_s): boolean {
@@ -133,7 +133,7 @@ namespace stem_s {
      * TFW-S-M1で温度[℃]を測定します。
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
-    //% blockId=get_temperature_s block="Temperature[degC] (S-M1) || %format"
+    //% blockId=get_temperature_s block="温度[℃] (S-M1) || %format"
     //% group="S-M1"
     //% weight=60
     export function getTemperature(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
@@ -148,7 +148,7 @@ namespace stem_s {
      * TFW-S-M1で湿度[%]を測定します。
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
-    //% blockId=get_humidity_s block="Humidity[\\%] || %format"
+    //% blockId=get_humidity_s block="湿度[\\%] || %format"
     //% group="S-M1"
     //% weight=55
     export function getHumidity(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
@@ -163,7 +163,7 @@ namespace stem_s {
      * TFW-S-M1で気圧[hPa]を測定します。
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
-    //% blockId=get_pressure_s block="Pressure[hPa] || %format"
+    //% blockId=get_pressure_s block="気圧[hPa] || %format"
     //% group="S-M1"
     //% weight=50
     export function getPressure(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {
@@ -179,7 +179,7 @@ namespace stem_s {
      * @param referencePressure 基準面の気圧[hPa], eg: 1013
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
-    //% blockId=get_altitude_s block="Altitude[m] Pressure at reference level%referencePressure| || %format"
+    //% blockId=get_altitude_s block="高度差[m] 基準面の気圧%referencePressure || %format"
     //% group="S-M1"
     //% weight=45
     export function getAltitude(referencePressure: number = 1013, format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {

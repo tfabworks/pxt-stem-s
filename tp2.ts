@@ -4,7 +4,7 @@ namespace stem_s {
      * @param format number format, eg: OutputNumberFormat.INTEGER
      */
     //% blockId = TP2_getTemperature
-    //% block="Temperature[degC] (TP2) || %format"
+    //% block="温度[℃] (TP2) || %format"
     //% group="TP2"
     //% weight=100
     export function TP2_getTemperature(format: OutputNumberFormat_s = OutputNumberFormat_s.INTEGER): number {

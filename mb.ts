@@ -1,21 +1,21 @@
 enum DarkOrBrightSpecified_s {
-    //% block="DARK"
+    //% block="暗い"
     IS_DARK,
-    //% block="BRIGHT"
+    //% block="明るい"
     IS_BRIGHT,
 }
 
 enum SettingHotCold_s {
-    //% block="HOT"
+    //% block="高い"
     HOT,
-    //% block="COLD"
+    //% block="低い"
     COLD,
 }
 
 enum OutputNumberFormat_s {
-    //% block="INTEGER"
+    //% block="整数"
     INTEGER = 0,
-    //% block="FLOAT"
+    //% block="小数"
     FLOAT = 1
 }
 
@@ -94,7 +94,7 @@ namespace stem_s {
      * @param lightThreshold number of brightness-threshold, eg: 15
      */
     //% blockId=brightness_determination_s
-    //% block="Than %lightThreshold, %settingDarkOrBright"
+    //% block="%lightThreshold|より%settingDarkOrBright|"
     //% lightThreshold.min=0 lightThreshold.max=255
     //% group="micro:bit本体"
     //% weight=100
@@ -133,7 +133,7 @@ namespace stem_s {
      * micro:bit本体が揺り動かされた場合に真を返します。
      */
     //% blockId=is_move_s
-    //% block="micro:bit is moving"
+    //% block="micro:bitが動いた"
     //% group="micro:bit本体"
     //% weight=90
     export function isMove(): boolean {
